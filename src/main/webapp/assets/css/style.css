@@ -1,0 +1,444 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	
+    background: #e2e2e2;
+}
+
+h1{
+	margin-top: 20px;
+    margin-bottom: 30px;
+    font-weight: normal;
+    font-size: 25px;
+	color: #5f758d;
+	height: 50px;
+	border-bottom: #c2d2e0 1px solid;
+}
+
+p {
+	margin-bottom: 15px;
+	font-weight: lighter;
+    font-size: 15px;
+    color: #000;	
+}
+
+button {
+	border: none;
+	font-weight: lighter;
+	font-size: 18px;
+	background:#15202b;
+	color: #e2e2e2;
+	width: 90%;
+	height: 30px;
+	margin: 1px;
+	border-radius: 5px;
+	box-shadow: #8599ad 2px 2px 5px;
+}
+
+label {
+	font-size: 20px;
+	font-weight: lighter;
+}
+
+input {
+	border: solid 0.5px #5f758d;
+	border-radius: 2px;
+	background: #e2e2e2;
+	height: 35px;
+	width: 500px;
+	margin: 10px;
+	font-size: 15px;
+	color: #3e3e3e;
+	font-weight: lighter;
+}
+
+form {
+	display: inline-grid;
+}
+
+/***HEADER****************************/
+
+header {
+	display: inline-flex;
+	position: absolute;
+	top:0;
+	height: 40px;
+	width: 100%;
+	border-bottom: #15202b solid 1px;
+	background: #45678a;
+	vertical-align: middle;
+}
+
+.logo {
+    position: relative;
+	height: 100%;
+    width: 180px;
+    background: #3e3e3e;
+    text-align: center;
+    border-bottom: 1px solid #a6a6a6;
+}
+
+.logo:hover{
+	background: #ffffffa1;
+}
+
+.logo a {
+    position: relative;
+	text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    text-shadow: #000000 2px 2px 3px;
+}
+
+.logo i::before {
+	content: url("../img/steering-wheel.svg");
+	margin-right: 10px;
+}
+
+.logo span::before {
+	content: 'CarsFleet';
+}
+
+#btn-menu-flex {
+	background: #c2d2e0;
+	border: none;
+	border-radius: 2px;
+	border: 0.5px solid #006666;
+	width: 60px;	
+	height: 40px;
+}
+
+#btn-menu-flex span::before {
+	content: url("../icons/arrow-left-right.svg");
+}
+
+
+/***MENU SIDE*************************/
+.menu-side {
+	position: absolute;
+    height: 100%;
+    width: 17.6%;
+    background: #34495e;
+    z-index: -2;
+    animation-duration: 0.5s;
+    animation-name: menuSideOpen;
+}
+
+@keyframes menuSideOpen {
+	from {
+		width: 4%;
+	}	
+	to {
+		width: 17.6%;
+	}
+}
+
+.menu-side ul {
+	position: relative;
+    list-style: none;
+    top: 44px;
+}
+
+.menu-side ul li {
+	position: relative;
+    height: 45px;
+    width: 100%;
+    border-bottom: 0.1px solid #b9ddf5;
+    padding-top: 8px;
+}
+
+.menu-side ul li:hover {
+	color: #000000;
+	background: #ffffffa1;
+}
+
+.menu-side ul ul {
+	transition: all 0.3s;
+    position: absolute;
+    background: #5f758d;
+    width: 100%;
+    margin: -18.1% auto auto 10.6%;
+}
+
+.menu-side ul ul a{
+	position: absolute;
+    left: -36px;
+}
+
+.menu-side ul li a{
+	font-size: 18px;
+    color: #ffffff;
+    margin-left: 15px;
+    text-shadow: #000000 2px 2px 3px;
+    text-decoration: none;
+}
+
+/***BUTTONS MENU*******************/
+/**************BUTTON HOME******/
+.home-item-menu i::before {
+	content: url("../icons/home.svg");
+	margin-right: 10px;
+}
+.home-item-menu span::after {
+	content: 'Home';
+}
+
+/**************BUTTON FLEET******/
+.fleet-item-menu i::before {
+	content: url("../icons/cone-striped.svg");
+	margin-right: 10px;
+}
+.fleet-item-menu span::after {
+	content: 'Fleet';
+}
+
+/**************BUTTON DRIVER******/
+.driver-item-menu i::before {
+	content: url("../icons/person.svg");
+	margin-right: 10px;
+}
+.driver-item-menu span::after {
+	content: 'Driver';
+}
+
+/**************SUB BUTTONS USERS******/
+/************************BUTTON PEOPLE******/
+.submenu-people i::before{
+	content: url("../icons/person.svg");
+	margin-left: 40px;
+	margin-right: 10px;
+}
+.submenu-people span::after{
+	content: 'People';
+}
+
+/************************BUTTON GROUPS******/
+.submenu-groups {
+	margin-right: 10px;
+}
+
+.submenu-groups i::before{
+	content: url("../icons/users.svg");
+	margin-left: 40px;
+	margin-right: 10px;
+}
+.submenu-groups span::after{
+	content: 'Groups';
+}
+/************************BUTTON MAINTENANCE******/
+.maintenance-item-menu i::before{
+	content: url("../icons/tools.svg");
+	margin-right: 10px;
+}
+.maintenance-item-menu span::after {
+	content: 'Maintenance';
+}
+
+/************************BUTTON SERVICES******/
+.tofuel-item-menu i::before{
+	content: url("../icons/bootstrap-reboot.svg");
+	margin-right: 10px;
+}
+.tofuel-item-menu span::after {
+	content: 'To Fuel';
+}
+
+/************************BUTTON FINISH DAY******/
+.timeline-item-menu i::before{
+	content: url("../icons/clock-fill.svg");
+	margin-right: 10px;
+}
+.timeline-item-menu span::after{
+	content: 'TimeLine';
+}
+
+/**************BUTTON USERS******/
+.users-item-menu i::before {
+	content: url("../icons/users.svg");
+	margin-right: 10px;
+}
+.users-item-menu span::after {
+	content: 'Users';
+}
+
+.more span::before {
+	content: 'Users';
+}
+.more span::after {
+	content: url("../icons/chevron-down.svg");
+	margin-left: 100px;
+}
+
+.open-users span::after {
+	content: url("../icons/chevron-left.svg");
+	margin-left: 50px;
+}
+
+.users-subitens-menu {
+	display: none;
+	margin-top: -48px;
+	
+}
+.users-subitens-menu-open {
+	display: inline-block;
+}
+
+/**************MENU SIDE CLOSE*********************/
+.menu-side-close {
+	position: absolute;
+    height: 100%;
+    width: 4%;
+    background: #34495e;
+    z-index: -2;
+    animation-duration: 0.5s;
+    animation-name: menuSideClose;
+    
+}
+
+@keyframes menuSideClose {
+	from {
+		width: 17.6%;
+	}	
+	to {
+		width: 4%;
+	}
+}
+
+.menu-side-close span:before{
+	content:'';
+}
+.menu-side-close span:after{
+	content:'';
+}
+
+.menu-side-close ul {
+    width: 55px;
+}
+
+.menu-side-close ul li {
+    width: 55px;
+}
+
+/**************LOGO CLOSE*********************/
+.logo-close {
+	width: 55px
+}
+.logo-close span::before{
+	content: '';
+}
+
+
+/***MAIN CONTENT*******************/
+#content {
+    position: absolute;
+    height: auto;
+    width: 82.4%;
+    padding-left: 17.6%;
+    padding-top: 3.1%;
+    z-index: -3;
+}
+
+#menu-module {
+    float: left;
+    margin: 10% auto auto 0.5%;
+    width: 28%;
+    text-align: center;
+    height: auto;
+    border-top: 5px solid #34495e;
+    border-bottom: 0.5px solid #a6a6a6;
+    border-left: 0.5px solid #c2d2e0;
+    border-right: 0.5px solid #c2d2e0;
+    border-radius: 5px;
+}
+
+/***MODULES*******************/
+#module{
+	float: right;
+    display: inline-block;
+    margin: 3% 1% auto auto;
+    width: 70%;
+    text-align: center;
+    height: auto;
+    border-top: 5px solid #34495e;
+    border-bottom: 0.5px solid #a6a6a6;
+    border-left: 0.5px solid #c2d2e0;
+    border-right: 0.5px solid #c2d2e0;
+    border-radius: 5px;
+}
+
+
+#module button{
+	margin-left: 20px;
+	height: 100px;
+	width: 200px;
+	margin: 2%;
+	background: #006666;
+	font-size: 25px;
+	color: #ffffff;
+}
+
+/***BUTTONS ACTIONS*******************/
+.btn-add-new {
+	background: #286ea7;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+.btn-save {
+	background: #28a745;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+.btn-clear-form {
+	background: #dc3545;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+.btn-back-consult {
+	background: #c25f0e;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+.btn-back-home {
+	background: #67686d;
+	border-radius: 3px;
+	margin: 10px;
+}
+/***TABLE*******************/
+table{
+	display: inline-table;
+	border-collapse: collapse;
+	width: 100%;
+}
+tbody {
+	border-top: 1px solid #34495e;
+}
+
+thead td{
+	font-weight: 100;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+
+
+
+
+
+
+

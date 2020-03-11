@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>CarsFleet</title>
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+</head>
+
+<body>
+	<header>
+		<div id="logo" class="logo" onclick="renderHome()"><a ><i></i><span></span></a></div>
+		<button id="btn-menu-flex"><span></span></button>
+	</header>
+	
+	<nav id="menu-side" class="menu-side">
+		<ul>
+			<li class="item-menu" onclick="renderHome()">
+				<a class="home-item-menu"><i></i><span></span></a>
+			</li>
+			<li class="item-menu" onclick="renderFleet()">
+				<a class="fleet-item-menu"><i></i><span></span></a>
+			</li>
+			<li class="item-menu" onclick="renderDriver()">
+				<a class="driver-item-menu"><i></i><span></span></a>
+			</li>
+			<li class="item-menu maintenance-item-menu" onclick="renderMaintenance()">
+				<a class="maintenance-item-menu">
+					<i></i><span></span>
+				</a>
+			</li>
+			<li class="item-menu" onclick="renderToFuel()">
+				<a class="tofuel-item-menu" ><i></i><span></span></a>
+			</li>
+			<li class="item-menu" onclick="renderTimeline()">
+				<a class="timeline-item-menu" ><i></i><span></span></a>
+			</li>
+			
+			<li class="item-menu close-item-menu" onclick="openModule('users')">
+				<a class="users-item-menu more" >
+					<i></i><span></span>
+				</a>
+				<ul class="users-subitens-menu">
+					<li onclick="renderPeoples()"><a class="submenu-people">
+						<i></i><span></span></a>
+					</li>
+				</ul>
+			</li>
+			
+		</ul>
+	</nav>
+	
+	<section id="content">
+		<aside id="menu-module">
+			
+		</aside>
+		
+		<main id="module">
+			
+		</main>
+	</section>
+	
+	<footer></footer>
+	
+	
+	
+	<script src="./lib/services/jquery-3.4.1.min.js"></script>
+	
+	<script type="text/javascript" src="./lib/controller/menu.js"></script>
+	<script type="text/javascript" src="./lib/controller/head.js"></script>
+	
+	<script type="text/javascript" src="./lib/components/button.js"></script>
+	<script type="text/javascript" src="./lib/components/title.js"></script>
+	<script type="text/javascript" src="./lib/components/table.js"></script>
+	<script type="text/javascript" src="./lib/components/input.js"></script>
+	<script type="text/javascript" src="./lib/components/label.js"></script>
+	<script type="text/javascript" src="./lib/components/text.js"></script>
+	
+	<script type="text/javascript" src="./pages/_home/index.js"></script>
+	<!-- Scripts fleet -->
+	<script type="text/javascript" src="./pages/fleet/index.js"></script>
+	<script type="text/javascript" src="./pages/fleet/create.js"></script>
+	<!-- Scripts driver -->
+	<script type="text/javascript" src="./pages/driver/index.js"></script>
+	<script type="text/javascript" src="./pages/driver/create.js"></script>
+	<!-- Scripts maintenance -->
+	<script type="text/javascript" src="./pages/maintenance/index.js"></script>
+	<script type="text/javascript" src="./pages/maintenance/create.js"></script>
+	<!-- Scripts toFuel -->
+	<script type="text/javascript" src="./pages/toFuel/index.js"></script>
+	<script type="text/javascript" src="./pages/toFuel/create.js"></script>
+	<!-- Scripts timeLine -->
+	<script type="text/javascript" src="./pages/timeLine/index.js"></script>
+	<script type="text/javascript" src="./pages/timeLine/create.js"></script>
+	<!-- Scripts peoples -->
+	<script type="text/javascript" src="./pages/users/peoples/index.js"></script>
+	<script type="text/javascript" src="./pages/users/peoples/create.js"></script>
+	
+	<script>window.onload = renderHome()</script>
+</body>
+
+</html>
