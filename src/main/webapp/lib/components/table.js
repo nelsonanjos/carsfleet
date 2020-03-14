@@ -3,8 +3,10 @@ const Table = (props) => {
         var_id,
         var_class = "table-app",
         var_head,
+        var_body,
     } = props;
 
+    
     var table = $('<table></table>');
     if(var_id != null)
         table.attr('id', var_id);
@@ -23,6 +25,28 @@ const Table = (props) => {
         tr.append(td);
     }
     thead.append(tr);
+    
+    if(var_body != null || var_body != undefined){
+	    for(let i = 0; i < var_body.length; i++){
+	    	tr = $('<tr></tr>');
+	    	for(let j = 0; j < var_body[i].length; j++){
+	    		var td = $('<td></td>');
+	    		td.text(var_body[i][j]);
+	    		tr.append(td);
+	    	}
+	    	tbody.append(tr);
+	    }
+    } else {
+    	tr = $('<tr></tr>');
+    	td = $('<td></td>');
+    	td.append(
+    	   Title({
+    		var_text: "Registers not found!",	   
+    	   })
+    	);
+    	tr.append(td);
+    	tbody.append(tr);
+    }
 
 
     table.append(thead);

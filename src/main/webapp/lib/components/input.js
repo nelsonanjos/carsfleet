@@ -5,6 +5,7 @@ const Input = (props) => {
         var_class,
         var_name,
         var_placeholder,
+        var_value = '',
     } = props;
 
     var input = $('<input></input>');
@@ -15,5 +16,6 @@ const Input = (props) => {
     input.attr('class', var_class);
     input.attr('name', var_name);
     input.attr('placeholder', var_placeholder);
+    input.attr('value', var_value);
     return input;
 }

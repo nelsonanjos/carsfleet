@@ -9,6 +9,8 @@ const renderCreatePeople = () => {
             	 name: $('#people-name').val(),
                  register: $('#people-register').val(),
                  cpf: $('#people-cpf').val(),
+                 user: $('#people-user').val(),
+                 password: $('#people-password').val(),
                  group: $('#people-group').val(),
              },
          })
@@ -108,14 +110,35 @@ const renderCreatePeople = () => {
         })
     );
     
-    var_form.append('Group');
+    var_form.append('User');
     var_form.append(
         Input({
-            var_id: 'people-group',
+            var_id: 'people-user',
             var_class: 'input-field',
-            var_name: 'people-group',
-            var_placeholder: 'Enter people group',
+            var_name: 'people-user',
+            var_placeholder: 'Enter people user',
         })
+    );
+    
+    var_form.append('Password');
+    var_form.append(
+    		Input({
+    			var_id: 'people-password',
+    			var_class: 'input-field',
+    			var_name: 'people-password',
+    			var_placeholder: 'Enter people password',
+    			var_type: 'password',
+    		})
+    );
+
+    var_form.append('Group');
+    var_form.append(
+    		Input({
+    			var_id: 'people-group',
+    			var_class: 'input-field',
+    			var_name: 'people-group',
+    			var_placeholder: 'Enter people group',
+    		})
     );
 
     var_module.append(var_form);

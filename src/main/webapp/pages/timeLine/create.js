@@ -8,8 +8,10 @@ const renderCreateTimeline = () => {
              data: {
             	 date: $('#timeline-date').val(),
                  startKm: $('#timeline-start-km').val(),
+                 vehicle: $('#timeline-vehicle').val(),
+                 driver: $('#timeline-driver').val(),
                  finishKm: $('#timeline-finish-km').val(),
-                 finishKm: $('#timeline-fail').val(),
+                 fail: $('#timeline-fail').val(),
                  date: $('#timeline-maintenance').val(),
              },
          })
@@ -88,6 +90,25 @@ const renderCreateTimeline = () => {
             var_name: 'timeline-date',
             var_placeholder: 'Enter timeline date',
         })
+    );
+    
+    var_form.append('Vehicle');
+    var_form.append(
+    		Input({
+    			var_id: 'timeline-vehicle',
+    			var_class: 'input-field',
+    			var_name: 'timeline-vehicle',
+    			var_placeholder: 'Enter timeline vehicle',
+    		})
+    );
+    var_form.append('Driver');
+    var_form.append(
+    		Input({
+    			var_id: 'timeline-driver',
+    			var_class: 'input-field',
+    			var_name: 'timeline-driver',
+    			var_placeholder: 'Enter timeline driver',
+    		})
     );
 
     var_form.append('Start Km');

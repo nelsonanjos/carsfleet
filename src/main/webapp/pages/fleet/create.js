@@ -6,6 +6,7 @@ const renderCreateVehicle = () => {
              method: 'POST',
              url: 'VehicleController',
              data: {
+            	 action: ('create'),
             	 type: $('#vehicle-type').val(),
                  plate: $('#vehicle-plate').val(),
                  brand: $('#vehicle-brand').val(),
@@ -40,7 +41,7 @@ const renderCreateVehicle = () => {
             var_class: "btn-save",
             var_text: "Save new Vehicle",
             var_event: "click",
-            var_action: (e => handleSubmit()),
+            var_action: (e => {handleSubmit(); renderFleet()}),
         })
     );
 

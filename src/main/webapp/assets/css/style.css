@@ -228,14 +228,6 @@ header {
 .submenu-groups span::after{
 	content: 'Groups';
 }
-/************************BUTTON MAINTENANCE******/
-.maintenance-item-menu i::before{
-	content: url("../icons/tools.svg");
-	margin-right: 10px;
-}
-.maintenance-item-menu span::after {
-	content: 'Maintenance';
-}
 
 /************************BUTTON SERVICES******/
 .tofuel-item-menu i::before{
@@ -370,7 +362,7 @@ header {
 }
 
 
-#module button{
+.button-home-module{
 	margin-left: 20px;
 	height: 100px;
 	width: 200px;
@@ -436,6 +428,15 @@ th {
 	color: white;
 }
 
+.btn-table-change {
+	height: 20px;
+	width: 20px;	
+}
+
+.btn-table-remove {
+	height: 20px;
+	width: 20px;	
+}
 
 
 

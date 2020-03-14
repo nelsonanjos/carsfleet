@@ -30,7 +30,7 @@ const renderHome = () => {
 
     var_module.append(
         Button({
-            var_class: "fleet-item-menu",
+            var_class: "fleet-item-menu button-home-module",
             var_text: "Fleet",
             var_event: "click",
             var_action: (e => renderFleet())
@@ -39,7 +39,7 @@ const renderHome = () => {
 
     var_module.append(
         Button({
-            var_class: "driver-item-menu",
+            var_class: "driver-item-menu button-home-module",
             var_text: "Driver",
             var_event: "click",
             var_action: (e => renderDriver())
@@ -48,16 +48,7 @@ const renderHome = () => {
 
     var_module.append(
         Button({
-            var_class: "maintenance-item-menu",
-            var_text: "Maintenance",
-            var_event: "click",
-            var_action: (e => renderMaintenance())
-        })
-    );
-
-    var_module.append(
-        Button({
-            var_class: "tofuel-item-menu",
+            var_class: "tofuel-item-menu button-home-module",
             var_text: "To Fuel",
             var_event: "click",
             var_action: (e => renderToFuel())
@@ -66,7 +57,7 @@ const renderHome = () => {
 
     var_module.append(
         Button({
-            var_class: "timeline-item-menu",
+            var_class: "timeline-item-menu button-home-module",
             var_text: "Timeline",
             var_event: "click",
             var_action: (e => renderTimeline())
@@ -75,7 +66,7 @@ const renderHome = () => {
 
     var_module.append(
         Button({
-            var_class: "submenu-people",
+            var_class: "submenu-people button-home-module",
             var_text: "Peoples",
             var_event: "click",
             var_action: (e => renderPeoples())

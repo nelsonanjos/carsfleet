@@ -4,7 +4,7 @@ const Title = (props) => {
         var_text,
     } = props;
 
-    const title = document.createElement(var_h);
-    title.appendChild(document.createTextNode(var_text));
+    var title = $('<'+var_h+'>','</'+var_h+'>');
+    title.text(var_text);
     return title;
 }

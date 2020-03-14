@@ -7,6 +7,8 @@ const renderCreateToFuel = () => {
              url: 'ToFuelController',
              data: {
             	 fuelStation: $('#toFuel-station').val(),
+            	 vehicle: $('#toFuel-vehicle').val(),
+            	 driver: $('#toFuel-driver').val(),
                  date: $('#toFuel-date').val(),
                  price: $('#toFuel-price').val(),
                  km: $('#toFuel-km').val(),
@@ -87,6 +89,26 @@ const renderCreateToFuel = () => {
             var_placeholder: 'Enter to fuel station',
         })
     );
+    
+    var_form.append('Vehicle');
+    var_form.append(
+    		Input({
+    			var_id: 'toFuel-vehicle',
+    			var_class: 'input-field',
+    			var_name: 'toFuel-vehicle',
+    			var_placeholder: 'Enter to fuel vehicle',
+    		})
+    );
+
+    var_form.append('Driver');
+    var_form.append(
+    		Input({
+    			var_id: 'toFuel-driver',
+    			var_class: 'input-field',
+    			var_name: 'toFuel-driver',
+    			var_placeholder: 'Enter to fuel driver',
+    		})
+    );
 
     var_form.append('Date');
     var_form.append(
@@ -96,6 +118,16 @@ const renderCreateToFuel = () => {
             var_name: 'toFuel-date',
             var_placeholder: 'Enter to fuel date',
         })
+    );
+
+    var_form.append('Liters');
+    var_form.append(
+    		Input({
+    			var_id: 'toFuel-liters',
+    			var_class: 'input-field',
+    			var_name: 'toFuel-liters',
+    			var_placeholder: 'Enter to fuel liters',
+    		})
     );
 
     var_form.append('Price');
