@@ -14,6 +14,12 @@ public class VehicleModel {
 	private String licensingExpiration;
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getType() {
 		return type;
 	}
@@ -65,9 +71,9 @@ public class VehicleModel {
 	
 	@Override
 	public String toString() {
-		return "VehicleModel [id=" + id + ", type=" + type + ", plate=" + plate + ", brand=" + brand + ", price="
-				+ price + ", state=" + state + ", color=" + color + ", year=" + year + ", licensingExpiration="
-				+ licensingExpiration + "]";
+		return "{\"id\":\""+id + "\", \"type\":\"" + type + "\", \"plate\":\"" + plate + "\", \"brand\":\"" + brand + "\", \"price\":\""
+				+ price + "\", \"state\":\"" + state + "\", \"color\":\"" + color + "\", \"year\":\"" + year + "\", \"licensingExpiration\":\""
+				+ licensingExpiration + "\"}";
 	}
 	
 }
