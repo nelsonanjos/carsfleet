@@ -1,24 +1,19 @@
 package br.com.solutions.carsFleet.model;
 
 public class ToFuelModel {
-	private long id;
-	private String fuelStation;
+	private String id;
 	private String date;
+	private String vehicle;
+	private String driver;
+	private String fuelStation;
 	private String liters;
 	private String price;
 	private String vehicleKm;
-	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
-	}
-	public String getFuelStation() {
-		return fuelStation;
-	}
-	public void setFuelStation(String fuelStation) {
-		this.fuelStation = fuelStation;
 	}
 	public String getDate() {
 		return date;
@@ -26,11 +21,29 @@ public class ToFuelModel {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public void setLiters(String liters) {
-		this.liters = liters;
+	public String getVehicle() {
+		return vehicle;
+	}
+	public void setVehicle(String vehicle) {
+		this.vehicle = vehicle;
+	}
+	public String getDriver() {
+		return driver;
+	}
+	public void setDriver(String driver) {
+		this.driver = driver;
+	}
+	public String getFuelStation() {
+		return fuelStation;
+	}
+	public void setFuelStation(String fuelStation) {
+		this.fuelStation = fuelStation;
 	}
 	public String getLiters() {
 		return liters;
+	}
+	public void setLiters(String liters) {
+		this.liters = liters;
 	}
 	public String getPrice() {
 		return price;
@@ -42,13 +55,9 @@ public class ToFuelModel {
 		return vehicleKm;
 	}
 	public void setVehicleKm(String vehicleKm) {
-		vehicleKm = vehicleKm;
+		this.vehicleKm = vehicleKm;
 	}
-	@Override
-	public String toString() {
-		return "ToFuelModel [id=" + id + ", fuelStation=" + fuelStation + ", date=" + date + ", price=" + price
-				+ ", vehicleKm=" + vehicleKm + "]";
-	}
+	
 	
 	
 	
