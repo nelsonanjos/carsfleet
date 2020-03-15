@@ -1,10 +1,15 @@
 package br.com.solutions.carsFleet.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.solutions.carsFleet.dao.DriverDao;
 import br.com.solutions.carsFleet.model.DriverModel;
 
 /**
@@ -13,9 +18,35 @@ import br.com.solutions.carsFleet.model.DriverModel;
 @WebServlet("/DriverController")
 public class DriverController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
 	public void service( HttpServletRequest request, HttpServletResponse response) {
-			
+		try {
+			switch (request.getParameter("action")) {
+			case "create":
+				create(request);
+				break;
+			case "read":
+				read(response);
+				break;
+			case "readUnit":
+				readUnit(request, response);
+				break;
+			case "update":
+				update(request);
+				break;
+			case "delete":
+				delete(request);
+				break;
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+	}
+	
+	public void create(HttpServletRequest request) {
 		DriverModel driver = new DriverModel();
 		
 		 String name = request.getParameter("name");
@@ -24,15 +55,60 @@ public class DriverController extends HttpServlet {
 		 String cpf = request.getParameter("cpf");
 		 String habilitation = request.getParameter("habilitation");
 		 String expirationHabilitation = request.getParameter("expirationHabilitation");
-		
+		 
 		 driver.setName(name);
 		 driver.setLocation(location);
 		 driver.setPhone(phone);
 		 driver.setCpf(cpf);
-		 driver.setHabilitation(habilitation);	
+		 driver.setHabilitation(habilitation);
 		 driver.setExpirationHabilitation(expirationHabilitation);
-		
 		 
-		 System.out.println(driver);
+		 DriverDao.create(driver);
 	}
+	
+	public void read(HttpServletResponse response) throws IOException {
+		PrintWriter out  = response.getWriter();
+		ArrayList drivers = DriverDao.read();
+			out.println("{\"Drivers\":"+drivers+"}");			
+	}
+	
+	public void readUnit(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		DriverModel driver = DriverDao.readUnit(request.getParameter("id"));
+		PrintWriter out  = response.getWriter();
+		out.print("{\"name\":\""+driver.getName()+"\"");			
+		out.print(",\"phone\":\""+driver.getPhone()+"\"");			
+		out.print(",\"location\":\""+driver.getLocation()+"\"");			
+		out.print(",\"cpf\":\""+driver.getCpf()+"\"");			
+		out.print(",\"habilitation\":\""+driver.getHabilitation()+"\"");			
+		out.print(",\"expirationHabilitation\":\""+driver.getExpirationHabilitation()+"\"");			
+	}
+	
+	public void update(HttpServletRequest request) {
+		 DriverModel driver = new DriverModel();
+		
+		 String id = request.getParameter("id");
+		 String name = request.getParameter("name");
+		 String location = request.getParameter("location");
+	     String phone = request.getParameter("phone");
+		 String cpf = request.getParameter("cpf");
+		 String habilitation = request.getParameter("habilitation");
+		 String expirationHabilitation = request.getParameter("expirationHabilitation");
+		 
+		 driver.setId(id);
+		 driver.setName(name);
+		 driver.setLocation(location);
+		 driver.setPhone(phone);
+		 driver.setCpf(cpf);
+		 driver.setHabilitation(habilitation);
+		 driver.setExpirationHabilitation(expirationHabilitation);
+		 
+		 
+		 DriverDao.update(driver);
+	}
+	
+	public void delete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		DriverDao.delete(id);
+	}
+       
 }
