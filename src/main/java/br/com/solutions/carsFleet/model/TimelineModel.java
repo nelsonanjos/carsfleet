@@ -1,20 +1,20 @@
 package br.com.solutions.carsFleet.model;
 
 public class TimelineModel {
-	private long id;
+	private String id;
 	private String vehicle;
 	private String driver;
-	private String dateTimeline;
+	private String date;
 	private String startKm;
 	private String finishKm;
 	private String fail;
-	private String maintenance;
+	private String maStringenance;
 	
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getVehicle() {
@@ -29,11 +29,11 @@ public class TimelineModel {
 	public void setDriver(String driver) {
 		this.driver = driver;
 	}
-	public String getDateTimeline() {
-		return dateTimeline;
+	public String getDate() {
+		return date;
 	}
-	public void setDateTimeline(String dateTimeline) {
-		this.dateTimeline = dateTimeline;
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public String getStartKm() {
 		return startKm;
@@ -54,15 +54,15 @@ public class TimelineModel {
 		this.fail = fail;
 	}
 	public String getMaintenance() {
-		return maintenance;
+		return maStringenance;
 	}
-	public void setMaintenance(String maintenance) {
-		this.maintenance = maintenance;
+	public void setMaintenance(String maStringenance) {
+		this.maStringenance = maStringenance;
 	}
 	@Override
 	public String toString() {
-		return "TimeLine [id=" + id + ", dateTimeline=" + dateTimeline + ", startKm=" + startKm + ", finishKm="
-				+ finishKm + ", fail=" + fail + ", Maintenance=" + maintenance + "]";
+		return "TimeLine [id=" + id + ", date=" + date + ", startKm=" + startKm + ", finishKm="
+				+ finishKm + ", fail=" + fail + ", MaStringenance=" + maStringenance + "]";
 	}
 	
 	
