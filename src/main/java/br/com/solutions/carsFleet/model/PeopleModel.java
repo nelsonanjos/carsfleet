@@ -1,7 +1,7 @@
 package br.com.solutions.carsFleet.model;
 
 public class PeopleModel {
-	private long id;
+	private String id;
 	private String name;
 	private String register;
 	private String cpf;
@@ -9,10 +9,10 @@ public class PeopleModel {
 	private String password;
 	private String group;
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -56,7 +56,7 @@ public class PeopleModel {
 	public String toString() {
 		return "UsersModel [id=" + id + ", name=" + name + ", register=" + register + ", cpf=" + cpf + ", group="
 				+ group + "]";
-	}	
+	}
 	
 		
 }
