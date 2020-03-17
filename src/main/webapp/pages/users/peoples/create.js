@@ -6,6 +6,7 @@ const renderCreatePeople = () => {
              method: 'POST',
              url: 'PeopleController',
              data: {
+            	 action: ('create'),
             	 name: $('#people-name').val(),
                  register: $('#people-register').val(),
                  cpf: $('#people-cpf').val(),
@@ -38,7 +39,7 @@ const renderCreatePeople = () => {
             var_class: "btn-save",
             var_text: "Save new People Register",
             var_event: "click",
-            var_action: (e => handleSubmit()),
+            var_action: (e => {handleSubmit(); renderPeoples();}),
         })
     );
 
@@ -51,6 +52,8 @@ const renderCreatePeople = () => {
                 '#people-name',
                 '#people-register',
                 '#people-cpf',
+                '#people-user',
+                '#people-password',
                 '#people-group',
             ])
         })
@@ -61,7 +64,7 @@ const renderCreatePeople = () => {
             var_class: "btn-back-consult",
             var_text: "Back to Consult People Register",
             var_event: "click",
-            var_action: (e => renderPeople())
+            var_action: (e => renderPeoples())
         })
     );
 
