@@ -9,6 +9,7 @@ public class ToFuelModel {
 	private String liters;
 	private String price;
 	private String vehicleKm;
+	
 	public String getId() {
 		return id;
 	}
@@ -58,7 +59,11 @@ public class ToFuelModel {
 		this.vehicleKm = vehicleKm;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "{\"id\":\""+id + "\", \"date\":\"" + date + "\", \"vehicle\":\"" + vehicle + "\", \"driver\":\"" + driver + "\", \"fuelStation\":\""
+				+ fuelStation + "\", \"liters\":\"" + liters + "\", \"price\":\"" + price + "\", \"vehicleKm\":\"" + vehicleKm + "\"}";
+	}
 	
 	
 }

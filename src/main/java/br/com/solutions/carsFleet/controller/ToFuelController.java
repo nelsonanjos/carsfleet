@@ -71,7 +71,7 @@ public class ToFuelController extends HttpServlet {
 	public void read(HttpServletResponse response) throws IOException {
 		PrintWriter out  = response.getWriter();
 		ArrayList toFuels = ToFuelDao.read();
-			out.println("{\"ToFuels\":"+toFuels+"}");			
+			out.println("{\"toFuels\":"+toFuels+"}");			
 	}
 	
 	public void readUnit(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -83,7 +83,7 @@ public class ToFuelController extends HttpServlet {
 		out.print(",\"fuelStation\":\""+toFuel.getFuelStation()+"\"");			
 		out.print(",\"liters\":\""+toFuel.getLiters()+"\"");			
 		out.print(",\"price\":\""+toFuel.getPrice()+"\"");			
-		out.print(",\"vehicleKm\":\""+toFuel.getVehicleKm()+"\"");			
+		out.print(",\"vehicleKm\":\""+toFuel.getVehicleKm()+"\"}");			
 	}
 	
 	public void update(HttpServletRequest request) {

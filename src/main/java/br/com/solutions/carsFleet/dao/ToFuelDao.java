@@ -16,17 +16,22 @@ public class ToFuelDao {
 		try {
 			Connection con = ConnectionDao.getInstanec().getConnection();
 			
-			String query = "INSERT INTO toFuel "
-									+ "(date, vehicle, driver, fuelStation, liters, price, vehicleKm)"
-									+ "VALUES (?,?,?,?,?,?,?)";
+			String query = "INSERT INTO toFuel"
+									+ " (fuelStation, vehicle, driver, date, liters, price, vehicleKm)"
+									+ " VALUES (?,"
+									+ " (SELECT id FROM vehicle WHERE plate = ?),"
+									+ " (SELECT id FROM driver WHERE cpf = ?),"
+									+ " ?, ?, ?, ?)";
 			PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
-			stmt.setString(i, toFuel.getDate());
+			
+			
+			stmt.setString(i, toFuel.getFuelStation());
 			i++;
 			stmt.setString(i, toFuel.getVehicle());
 			i++;
 			stmt.setString(i, toFuel.getDriver());
 			i++;
-			stmt.setString(i, toFuel.getFuelStation());
+			stmt.setString(i, toFuel.getDate());
 			i++;
 			stmt.setString(i, toFuel.getLiters());
 			i++;
@@ -48,18 +53,23 @@ public class ToFuelDao {
 		ToFuelModel toFuel = null;
         try {
             Connection con = ConnectionDao.getInstanec().getConnection();
-            String query = "SELECT * FROM toFuel WHERE 1";
+            String query = "SELECT "
+            							+ "toFuel.id, toFuel.date, vehicle.plate, driver.name, toFuel.liters, toFuel.price  "
+            					+ "FROM "
+            							+ "toFuel, vehicle, driver "
+            					+ "WHERE "
+            							+ "toFuel.vehicle = vehicle.id and toFuel.driver = driver.id";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
+            
             while (rs.next()) {
             	toFuel = new ToFuelModel();
             	toFuel.setId(rs.getString("id"));
             	toFuel.setDate(rs.getString("date"));
-            	toFuel.setDriver(rs.getString("driver"));
-            	toFuel.setFuelStation(rs.getString("fuelStation"));
+            	toFuel.setVehicle(rs.getString("plate"));            	
+            	toFuel.setDriver(rs.getString("name"));
             	toFuel.setLiters(rs.getString("liters"));
             	toFuel.setPrice(rs.getString("price"));
-            	toFuel.setVehicleKm(rs.getString("vehicleKm"));
             	toFuels.add(toFuel);
             }
         } catch (Exception e) {
@@ -72,15 +82,20 @@ public class ToFuelDao {
 		ToFuelModel toFuel = null;
 		try {
 			Connection con = ConnectionDao.getInstanec().getConnection();
-			String query = "SELECT * FROM toFuel WHERE id = ?";
+			String query = "SELECT "
+										+ "*"
+								+ " FROM "
+										+ "toFuel, vehicle, driver "
+								+ "WHERE "
+										+ "toFuel.id=? and toFuel.vehicle = vehicle.id and toFuel.driver = driver.id";
 			PreparedStatement stmt =  (PreparedStatement) con.prepareStatement(query);
 			stmt.setString(1, id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				toFuel = new ToFuelModel();
 				toFuel.setDate(rs.getString("date"));
-				toFuel.setVehicle(rs.getString("vehicle"));
-				toFuel.setDriver(rs.getString("driver"));
+				toFuel.setVehicle(rs.getString("plate"));
+				toFuel.setDriver(rs.getString("cpf"));
 				toFuel.setFuelStation(rs.getString("fuelStation"));
 				toFuel.setLiters(rs.getString("liters"));
 				toFuel.setPrice(rs.getString("price"));
@@ -97,7 +112,7 @@ public class ToFuelDao {
 		try {
             Connection con = ConnectionDao.getInstanec().getConnection();
             String query = "UPDATE toFuel SET"
-            		+ " date = ?,  vehicle= ?, driver = ?,  fuelStation = ?, liters = ?, price = ?, vehicleKm = ?"
+            		+ " date = ?,  vehicle= (SELECT id FROM vehicle WHERE plate = ?), driver = (SELECT id FROM driver WHERE cpf = ?),  fuelStation = ?, liters = ?, price = ?, vehicleKm = ?"
             		+ " WHERE id = ?";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             
