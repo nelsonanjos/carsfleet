@@ -3,7 +3,7 @@ const Button = (props) => {
     const {
         var_id=null,
         var_class = "btn",
-        var_text = "Button Undefined",
+        var_text = "",
         var_type = "button",
         var_action,
     } = props;
