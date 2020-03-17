@@ -54,8 +54,8 @@ public class PeopleModel {
 	}
 	@Override
 	public String toString() {
-		return "UsersModel [id=" + id + ", name=" + name + ", register=" + register + ", cpf=" + cpf + ", group="
-				+ group + "]";
+		return "{\"id\":\""+id + "\", \"name\":\"" + name + "\", \"register\":\"" + register + "\", \"cpf\":\"" + cpf + "\", \"user\":\""
+				+ user + "\", \"password\":\"" + password + "\", \"group\":\"" + group + "\"}";
 	}
 	
 		

@@ -16,9 +16,10 @@ public class PeopleDao {
 		try {
 			Connection con = ConnectionDao.getInstanec().getConnection();
 			
-			String query = "INSERT INTO people "
-									+ "(name, register, cpf, user, password, group)"
-									+ "VALUES (?,?,?,?,?,?)";
+			String query = "INSERT INTO people"
+									+ " (name, register, cpf, user, password, pgroup)"
+									+ " VALUES (?,?,?,?,?,?)";
+
 			PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
 			stmt.setString(i, people.getName());
 			i++;
@@ -56,7 +57,7 @@ public class PeopleDao {
             	people.setCpf(rs.getString("cpf"));
             	people.setUser(rs.getString("user"));
             	people.setPassword(rs.getString("password"));
-            	people.setGroup(rs.getString("group"));
+            	people.setGroup(rs.getString("pgroup"));
             	peoples.add(people);
             }
         } catch (Exception e) {
@@ -80,7 +81,7 @@ public class PeopleDao {
 				people.setCpf(rs.getString("cpf"));
 				people.setUser(rs.getString("user"));
 				people.setPassword(rs.getString("password"));
-				people.setGroup(rs.getString("group"));
+				people.setGroup(rs.getString("pgroup"));
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -93,7 +94,7 @@ public class PeopleDao {
 		try {
             Connection con = ConnectionDao.getInstanec().getConnection();
             String query = "UPDATE people SET"
-            		+ " name = ?,  register= ?, cpf = ?,  user = ?, password = ?, group = ?,"
+            		+ " name = ?,  register= ?, cpf = ?,  user = ?, password = ?, pgroup = ?"
             		+ " WHERE id = ?";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             

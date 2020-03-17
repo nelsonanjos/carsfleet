@@ -56,6 +56,7 @@ public class PeopleController extends HttpServlet {
 		 String password = request.getParameter("password");
 		 String group = request.getParameter("group");
 		 
+		 
 		 people.setName(name);
 		 people.setRegister(register);
 		 people.setCpf(cpf);
@@ -69,7 +70,7 @@ public class PeopleController extends HttpServlet {
 	public void read(HttpServletResponse response) throws IOException {
 		PrintWriter out  = response.getWriter();
 		ArrayList peoples = PeopleDao.read();
-			out.println("{\"Peoples\":"+peoples+"}");			
+			out.println("{\"peoples\":"+peoples+"}");			
 	}
 	
 	public void readUnit(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -80,7 +81,7 @@ public class PeopleController extends HttpServlet {
 		out.print(",\"cpf\":\""+people.getCpf()+"\"");			
 		out.print(",\"user\":\""+people.getUser()+"\"");			
 		out.print(",\"password\":\""+people.getPassword()+"\"");			
-		out.print(",\"group\":\""+people.getGroup()+"\"");			
+		out.print(",\"group\":\""+people.getGroup()+"\"}");			
 	}
 	
 	public void update(HttpServletRequest request) {
