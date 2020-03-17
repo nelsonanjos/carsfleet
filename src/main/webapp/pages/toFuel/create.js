@@ -6,12 +6,14 @@ const renderCreateToFuel = () => {
              method: 'POST',
              url: 'ToFuelController',
              data: {
+            	 action: ('create'),
             	 fuelStation: $('#toFuel-station').val(),
             	 vehicle: $('#toFuel-vehicle').val(),
             	 driver: $('#toFuel-driver').val(),
                  date: $('#toFuel-date').val(),
                  price: $('#toFuel-price').val(),
-                 km: $('#toFuel-km').val(),
+                 liters: $('#toFuel-liters').val(),
+                 vehicleKm: $('#toFuel-km').val(),
              },
          })
     }
