@@ -6,14 +6,17 @@ const renderCreateDriver = () => {
              method: 'POST',
              url: 'DriverController',
              data: {
+            	 action: ('create'),
                  name: $('#driver-name').val(),
                  location: $('#driver-location').val(),
                  phone: $('#driver-phone').val(),
                  cpf: $('#driver-cpf').val(),
                  habilitation: $('#driver-habilitation').val(),
-                 expirationHabilitation: $('#driver-expirationHabilitation').val(),
+                 habilitationExpiration: $('#driver-habilitation-expiration').val(),
              },
          })
+         
+         renderDriver();
     }
 
     const var_menu_module = $("#menu-module");
@@ -53,7 +56,7 @@ const renderCreateDriver = () => {
                  '#driver-phone',
                  '#driver-cpf',
                  '#driver-habilitation',
-                 '#driver-expiration-habilitation',
+                 '#driver-habilitation-expiration',
             ]),
         })
     );
@@ -132,13 +135,13 @@ const renderCreateDriver = () => {
         })
     );
 
-    var_form.append('Expiration Habilitation');
+    var_form.append('Habilitation Expiration');
     var_form.append(
         Input({
-            var_id: 'driver-expiration-habilitation',
+            var_id: 'driver-habilitation-expiration',
             var_class: 'input-field',
-            var_name: 'driver-expiration-habilitation',
-            var_placeholder: 'Enter driver expiration habilitation',
+            var_name: 'driver-habilitation-expiration',
+            var_placeholder: 'Enter driver habilitation expiration',
         })
     );
 
