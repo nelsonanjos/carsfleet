@@ -4,15 +4,16 @@ const renderCreateTimeline = () => {
 
          $.ajax({
              method: 'POST',
-             url: 'TimeLineController',
+             url: 'TimelineController',
              data: {
+            	 action: ('create'),
             	 date: $('#timeline-date').val(),
+            	 vehicle: $('#timeline-vehicle').val(),
+            	 driver: $('#timeline-driver').val(),
                  startKm: $('#timeline-start-km').val(),
-                 vehicle: $('#timeline-vehicle').val(),
-                 driver: $('#timeline-driver').val(),
                  finishKm: $('#timeline-finish-km').val(),
                  fail: $('#timeline-fail').val(),
-                 date: $('#timeline-maintenance').val(),
+                 maintenance: $('#timeline-maintenance').val(),
              },
          })
     }
@@ -39,7 +40,7 @@ const renderCreateTimeline = () => {
             var_class: "btn-save",
             var_text: "Save new Timeline",
             var_event: "click",
-            var_action: (e => handleSubmit()),
+            var_action: (e => {handleSubmit(); renderTimeline();}),
         })
     );
 
@@ -50,6 +51,8 @@ const renderCreateTimeline = () => {
             var_event: "click",
             var_action: e => filedsClear([
                 '#timeline-date',
+                '#timeline-vehicle',
+                '#timeline-driver',
                 '#timeline-start-km',
                 '#timeline-finish-km',
                 '#timeline-fail',
