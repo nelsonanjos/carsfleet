@@ -60,7 +60,7 @@ const renderFleet = () => {
 	table.append(thead);
 	
 	var_module.append(table);
-	//============================REMOVE
+	//============================removeDataTable
 	const removeDataTable = (id) => {
 		$.ajax({
 			method: 'POST',
@@ -71,9 +71,9 @@ const renderFleet = () => {
 			},
 		});
 		$('#tbody-fleet').remove();
-		readDatesForTable();
+		readDatasForTable();
 	}
-	//============================CONSULT
+	//============================readDatasForTable
 	const readDatasForTable = () => {
 		tbody = $('<tbody></tbody>');
 		tbody.attr('id', 'tbody-fleet');
@@ -85,39 +85,53 @@ const renderFleet = () => {
 	        },
 	        success: (data) => {
 	        	vehicles = JSON.parse(data).vehicles;
-	        	vehicles.map(vehicle => {
+	        	if(vehicles !== null && vehicles !== undefined && vehicles.length > 0){
+		        	vehicles.map(vehicle => {
+		        		tr = $('<tr></tr>');
+		        		td = $('<td></td>').text(vehicle.type); tr.append(td);
+		        		td = $('<td></td>').text(vehicle.plate); tr.append(td);
+		        		td = $('<td></td>').text(vehicle.color); tr.append(td);
+		        		td = $('<td></td>').text(vehicle.licensingExpiration); tr.append(td);
+		        		//Button change
+		        		td = $('<td></td>');
+		        		var btn = $('<button></button>');
+		        		btn = Button({
+		                    var_class: "btn-table-change",
+		                    var_text: "",
+		                    var_event: "click",
+		                    var_action: (e => renderUpdateVehicle(vehicle.id)),
+		                })
+		        		td.append(btn);
+		        		tr.append(td);
+		        		//Button Remove
+		        		td = $('<td></td>'); 
+		        		btn = Button({
+		                    var_class: "btn-table-remove",
+		                     var_text: "",
+		                    var_event: "click",
+		                    var_action: (e => removeDataTable(vehicle.id)),
+		                })
+		        		td.append(btn);
+		        		tr.append(td);
+	
+		        		tbody.append(tr);
+		        	})
+	        	} else {
 	        		tr = $('<tr></tr>');
-	        		td = $('<td></td>').text(vehicle.type); tr.append(td);
-	        		td = $('<td></td>').text(vehicle.plate); tr.append(td);
-	        		td = $('<td></td>').text(vehicle.color); tr.append(td);
-	        		td = $('<td></td>').text(vehicle.licensingExpiration); tr.append(td);
-	        		//Button change
 	        		td = $('<td></td>');
-	        		var btn = $('<button></button>');
-	        		btn = Button({
-	                    var_class: "btn-table-change",
-	                    var_text: "E",
-	                    var_event: "click",
-	                    var_action: (e => renderUpdateVehicle(vehicle.id)),
-	                })
-	        		td.append(btn);
+	        		td.append(
+        				Title({
+        					var_h: 'h2',
+        					var_text: 'Not found registers!',
+        				})
+        			);
 	        		tr.append(td);
-	        		//Button Remove
-	        		td = $('<td></td>'); 
-	        		btn = Button({
-	                    var_class: "btn-table-change",
-	                    var_text: "R",
-	                    var_event: "click",
-	                    var_action: (e => removeDataTable(vehicle.id)),
-	                })
-	        		td.append(btn);
-	        		tr.append(td);
-
 	        		tbody.append(tr);
-	        	})
-	        }
+	        	}
+		     }
 	    });
 		table.append(tbody);
+			
 	}
 	
 	window.onload = readDatasForTable();
