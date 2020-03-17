@@ -30,7 +30,7 @@ public class DriverDao {
 			i++;
 			stmt.setString(i, driver.getHabilitation());
 			i++;
-			stmt.setString(i, driver.getExpirationHabilitation());
+			stmt.setString(i, driver.getHabilitationExpiration());
 			
 			stmt.execute();
 			con.close();
@@ -57,7 +57,7 @@ public class DriverDao {
             	driver.setPhone(rs.getString("phone"));
             	driver.setCpf(rs.getString("cpf"));
             	driver.setHabilitation(rs.getString("habilitation"));
-            	driver.setExpirationHabilitation(rs.getString("expirationHabilitation"));
+            	driver.setHabilitationExpiration(rs.getString("habilitationExpiration"));
                 drivers.add(driver);
             }
         } catch (Exception e) {
@@ -81,7 +81,7 @@ public class DriverDao {
 				driver.setPhone(rs.getString("phone"));
 				driver.setCpf(rs.getString("cpf"));
 				driver.setHabilitation(rs.getString("Habilitation"));
-				driver.setExpirationHabilitation(rs.getString("ExpirationHabilitation"));
+				driver.setHabilitationExpiration(rs.getString("habilitationExpiration"));
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -94,8 +94,7 @@ public class DriverDao {
 		try {
             Connection con = ConnectionDao.getInstanec().getConnection();
             String query = "UPDATE driver SET"
-            		+ " name = ?,  Location= ?, Phone = ?, Cpf = ?, Habilitation = ?, ExpirationHabilitation = ?,"
-            		+" vyear = ?, licensingExpiration = ?"
+            		+ " name = ?,  location= ?, phone = ?, cpf = ?, habilitation = ?, habilitationExpiration = ?"
             		+ " WHERE id = ?";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             
@@ -109,7 +108,7 @@ public class DriverDao {
             i++;
             stmt.setString(i, driver.getHabilitation());
             i++;
-            stmt.setString(i, driver.getExpirationHabilitation());
+            stmt.setString(i, driver.getHabilitationExpiration());
             i++;
             stmt.setInt(i, Integer.parseInt(driver.getId()) );
             		

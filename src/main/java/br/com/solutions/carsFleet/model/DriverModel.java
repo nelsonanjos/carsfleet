@@ -7,7 +7,7 @@ public class DriverModel {
 	private String phone;
 	private String cpf;
 	private String habilitation;
-	private String expirationHabilitation;
+	private String habilitationExpiration;
 	
 	public String getId() {
 		return id;
@@ -45,16 +45,17 @@ public class DriverModel {
 	public void setHabilitation(String habilitation) {
 		this.habilitation = habilitation;
 	}
-	public String getExpirationHabilitation() {
-		return expirationHabilitation;
+	public String getHabilitationExpiration() {
+		return habilitationExpiration;
 	}
-	public void setExpirationHabilitation(String expirationHabilitation) {
-		this.expirationHabilitation = expirationHabilitation;
+	public void setHabilitationExpiration(String habilitationExpiration) {
+		this.habilitationExpiration = habilitationExpiration;
 	}
+	
 	@Override
 	public String toString() {
-		return "DriverModel [name=" + name + ", location=" + location + ", phone=" + phone + ", cpf=" + cpf
-				+ ", habilitation=" + habilitation + ", expirationHabilitation=" + expirationHabilitation + "]";
+		return "{\"id\":\""+id + "\", \"name\":\"" + name + "\", \"location\":\"" + location + "\", \"phone\":\"" + phone + "\", \"cpf\":\""
+				+ cpf + "\", \"habilitation\":\"" + habilitation + "\", \"habilitationExpiration\":\"" + habilitationExpiration + "\"}";
 	}
 	
 	
