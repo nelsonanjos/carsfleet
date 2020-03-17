@@ -18,7 +18,9 @@ public class TimelineDao {
 			
 			String query = "INSERT INTO timeline "
 									+ "(date, vehicle, driver, startKm, finishKm, fail, maintenance)"
-									+ "VALUES (?,?,?,?,?,?,?)";
+									+ "VALUES (?,"
+									+ "(SELECT id FROM vehicle WHERE plate = ?),"
+									+ "(SELECT id FROM driver WHERE cpf = ?),?,?,?,?)";
 			PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
 			stmt.setString(i, timeline.getDate());
 			i++;
@@ -48,14 +50,17 @@ public class TimelineDao {
 		TimelineModel timeline = null;
         try {
             Connection con = ConnectionDao.getInstanec().getConnection();
-            String query = "SELECT * FROM timeline WHERE 1";
+            String query = "SELECT * FROM timeline, vehicle, driver"
+            					+ " WHERE"
+            					+ " timeline.vehicle = vehicle.id and timeline.driver = driver.id";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
             	timeline = new TimelineModel();
             	timeline.setId(rs.getString("id"));
             	timeline.setDate(rs.getString("date"));
-            	timeline.setDriver(rs.getString("driver"));
+            	timeline.setVehicle(rs.getString("plate"));
+            	timeline.setDriver(rs.getString("name"));
             	timeline.setStartKm(rs.getString("startKm"));
             	timeline.setFinishKm(rs.getString("finishKm"));
             	timeline.setFail(rs.getString("fail"));
@@ -72,15 +77,18 @@ public class TimelineDao {
 		TimelineModel timeline = null;
 		try {
 			Connection con = ConnectionDao.getInstanec().getConnection();
-			String query = "SELECT * FROM timeline WHERE id = ?";
+			String query = "SELECT * FROM timeline, vehicle, driver"
+								+ " WHERE"
+									+ " timeline.id = ? and  timeline.vehicle = vehicle.id and timeline.driver = driver.id";
+			
 			PreparedStatement stmt =  (PreparedStatement) con.prepareStatement(query);
 			stmt.setString(1, id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				timeline = new TimelineModel();
 				timeline.setDate(rs.getString("date"));
-				timeline.setVehicle(rs.getString("vehicle"));
-				timeline.setDriver(rs.getString("driver"));
+				timeline.setVehicle(rs.getString("plate"));
+				timeline.setDriver(rs.getString("cpf"));
 				timeline.setStartKm(rs.getString("startKm"));
 				timeline.setFinishKm(rs.getString("finishKm"));
 				timeline.setFail(rs.getString("fail"));
@@ -97,8 +105,11 @@ public class TimelineDao {
 		try {
             Connection con = ConnectionDao.getInstanec().getConnection();
             String query = "UPDATE timeline SET"
-            		+ " date = ?,  vehicle= ?, driver = ?,  startKm = ?, finishKm = ?, fail = ?, maintenance = ?"
-            		+ " WHERE id = ?";
+            							+ " date = ?,"
+            							+ " vehicle = (SELECT id FROM vehicle WHERE  plate = ?),"
+            							+ " driver = (SELECT id FROM driver WHERE cpf = ?),"
+            							+ " startKm = ?, finishKm = ?, fail = ?, maintenance = ?"
+            					+ " WHERE id = ?";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             
             stmt.setString(i, timeline.getDate());

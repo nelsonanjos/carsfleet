@@ -8,7 +8,7 @@ public class TimelineModel {
 	private String startKm;
 	private String finishKm;
 	private String fail;
-	private String maStringenance;
+	private String maintenance;
 	
 	
 	public String getId() {
@@ -54,15 +54,16 @@ public class TimelineModel {
 		this.fail = fail;
 	}
 	public String getMaintenance() {
-		return maStringenance;
+		return maintenance;
 	}
-	public void setMaintenance(String maStringenance) {
-		this.maStringenance = maStringenance;
+	public void setMaintenance(String maintenance) {
+		this.maintenance = maintenance;
 	}
+	
 	@Override
 	public String toString() {
-		return "TimeLine [id=" + id + ", date=" + date + ", startKm=" + startKm + ", finishKm="
-				+ finishKm + ", fail=" + fail + ", MaStringenance=" + maStringenance + "]";
+		return "{\"id\":\""+id + "\", \"date\":\"" + date + "\", \"vehicle\":\"" + vehicle + "\", \"driver\":\"" + driver + "\", \"startKm\":\""
+				+ startKm+ "\", \"finishKm\":\"" + finishKm + "\", \"fail\":\"" + fail + "\", \"maintenance\":\"" + maintenance + "\"}";
 	}
 	
 	

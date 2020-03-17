@@ -71,7 +71,7 @@ public class TimelineController extends HttpServlet {
 	public void read(HttpServletResponse response) throws IOException {
 		PrintWriter out  = response.getWriter();
 		ArrayList timelines = TimelineDao.read();
-			out.println("{\"Timelines\":"+timelines+"}");			
+			out.println("{\"timelines\":"+timelines+"}");			
 	}
 	
 	public void readUnit(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -83,7 +83,7 @@ public class TimelineController extends HttpServlet {
 		out.print(",\"startKm\":\""+timeline.getStartKm()+"\"");			
 		out.print(",\"finishKm\":\""+timeline.getFinishKm()+"\"");			
 		out.print(",\"fail\":\""+timeline.getFail()+"\"");			
-		out.print(",\"maintenance\":\""+timeline.getMaintenance()+"\"");			
+		out.print(",\"maintenance\":\""+timeline.getMaintenance()+"\"}");	
 	}
 	
 	public void update(HttpServletRequest request) {
