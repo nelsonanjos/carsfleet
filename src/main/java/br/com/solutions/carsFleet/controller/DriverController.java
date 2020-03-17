@@ -54,14 +54,14 @@ public class DriverController extends HttpServlet {
 	     String phone = request.getParameter("phone");
 		 String cpf = request.getParameter("cpf");
 		 String habilitation = request.getParameter("habilitation");
-		 String expirationHabilitation = request.getParameter("expirationHabilitation");
+		 String habilitationExpiration = request.getParameter("habilitationExpiration");
 		 
 		 driver.setName(name);
 		 driver.setLocation(location);
 		 driver.setPhone(phone);
 		 driver.setCpf(cpf);
 		 driver.setHabilitation(habilitation);
-		 driver.setExpirationHabilitation(expirationHabilitation);
+		 driver.setHabilitationExpiration(habilitationExpiration);
 		 
 		 DriverDao.create(driver);
 	}
@@ -69,7 +69,7 @@ public class DriverController extends HttpServlet {
 	public void read(HttpServletResponse response) throws IOException {
 		PrintWriter out  = response.getWriter();
 		ArrayList drivers = DriverDao.read();
-			out.println("{\"Drivers\":"+drivers+"}");			
+			out.println("{\"drivers\":"+drivers+"}");		
 	}
 	
 	public void readUnit(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -80,7 +80,7 @@ public class DriverController extends HttpServlet {
 		out.print(",\"location\":\""+driver.getLocation()+"\"");			
 		out.print(",\"cpf\":\""+driver.getCpf()+"\"");			
 		out.print(",\"habilitation\":\""+driver.getHabilitation()+"\"");			
-		out.print(",\"expirationHabilitation\":\""+driver.getExpirationHabilitation()+"\"");			
+		out.print(",\"habilitationExpiration\":\""+driver.getHabilitationExpiration()+"\"}");			
 	}
 	
 	public void update(HttpServletRequest request) {
@@ -92,7 +92,7 @@ public class DriverController extends HttpServlet {
 	     String phone = request.getParameter("phone");
 		 String cpf = request.getParameter("cpf");
 		 String habilitation = request.getParameter("habilitation");
-		 String expirationHabilitation = request.getParameter("expirationHabilitation");
+		 String expirationHabilitation = request.getParameter("habilitationExpiration");
 		 
 		 driver.setId(id);
 		 driver.setName(name);
@@ -100,7 +100,7 @@ public class DriverController extends HttpServlet {
 		 driver.setPhone(phone);
 		 driver.setCpf(cpf);
 		 driver.setHabilitation(habilitation);
-		 driver.setExpirationHabilitation(expirationHabilitation);
+		 driver.setHabilitationExpiration(expirationHabilitation);
 		 
 		 
 		 DriverDao.update(driver);
