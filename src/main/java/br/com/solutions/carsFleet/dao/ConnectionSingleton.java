@@ -1,11 +1,13 @@
 package br.com.solutions.carsFleet.dao;
 
+//PADRÃO DE PROJETO CRIACIONAL SIGLETON
+
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Connection;
 
-import com.mysql.jdbc.Connection;
-
-public class ConnectionDao {
+public class ConnectionSingleton {
     String caminho = "localhost";
     String porta =  "3305";
     String nome = "carsFleet";
@@ -15,16 +17,16 @@ public class ConnectionDao {
     private final String URL = "jdbc:mysql://" + caminho + ":" + porta + "/" + nome + "?useTimezone=true&serverTimezone=GMT"; //lerCaminhoDoSrv();
     private final String USER = usuario;
     private final String PASS = senha;
-    private static ConnectionDao connectionDao;
+    private static ConnectionSingleton connectionDao;
 
-    public static ConnectionDao getInstanec() {
+    public static ConnectionSingleton getInstanec() {
         if (connectionDao == null) {
-        	connectionDao = new ConnectionDao();
+        	connectionDao = new ConnectionSingleton();
         }
         return connectionDao;
     }
 
-    public java.sql.Connection getConnection() throws ClassNotFoundException, SQLException {
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
         return  DriverManager.getConnection(URL, USER, PASS);
     }
