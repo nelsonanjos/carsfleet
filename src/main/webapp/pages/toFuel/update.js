@@ -4,9 +4,9 @@ const renderUpdateToFuel = (id) => {
 
          $.ajax({
              method: 'POST',
-             url: 'ToFuelController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('update'),
+            	 action: ('toFuel.UpdateToFuel'),
             	 id: id,
             	 date: $('#toFuel-date').val(),
                  vehicle: $('#toFuel-vehicle').val(),
@@ -87,8 +87,8 @@ const renderUpdateToFuel = (id) => {
     );
     $.ajax({
     	method: 'POST',
-        url: 'ToFuelController',
-        data: {action: ('readUnit'), id:id},
+        url: 'ControllerFactory',
+        data: {action: ('toFuel.ReadUnitToFuel'), id:id},
         success:(data) => {
 
         	let toFuel = JSON.parse(data);

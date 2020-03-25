@@ -14,7 +14,7 @@ public class ToFuelDao {
 	public static void create(ToFuelModel toFuel) {
 		int i = 1;
 		try {
-			Connection con = ConnectionDao.getInstanec().getConnection();
+			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			
 			String query = "INSERT INTO toFuel"
 									+ " (fuelStation, vehicle, driver, date, liters, price, vehicleKm)"
@@ -52,7 +52,7 @@ public class ToFuelDao {
 		ArrayList toFuels = new ArrayList();
 		ToFuelModel toFuel = null;
         try {
-            Connection con = ConnectionDao.getInstanec().getConnection();
+            Connection con = ConnectionSingleton.getInstanec().getConnection();
             String query = "SELECT "
             							+ "toFuel.id, toFuel.date, vehicle.plate, driver.name, toFuel.liters, toFuel.price  "
             					+ "FROM "
@@ -81,7 +81,7 @@ public class ToFuelDao {
 	public static ToFuelModel readUnit(String id) {
 		ToFuelModel toFuel = null;
 		try {
-			Connection con = ConnectionDao.getInstanec().getConnection();
+			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			String query = "SELECT "
 										+ "*"
 								+ " FROM "
@@ -110,7 +110,7 @@ public class ToFuelDao {
 	public static void update(ToFuelModel toFuel) {
         int i = 1;
 		try {
-            Connection con = ConnectionDao.getInstanec().getConnection();
+            Connection con = ConnectionSingleton.getInstanec().getConnection();
             String query = "UPDATE toFuel SET"
             		+ " date = ?,  vehicle= (SELECT id FROM vehicle WHERE plate = ?), driver = (SELECT id FROM driver WHERE cpf = ?),  fuelStation = ?, liters = ?, price = ?, vehicleKm = ?"
             		+ " WHERE id = ?";
@@ -141,7 +141,7 @@ public class ToFuelDao {
 	
 	public static void delete(String id) {
         try {
-            Connection connection = ConnectionDao.getInstanec().getConnection();
+            Connection connection = ConnectionSingleton.getInstanec().getConnection();
             String query = "DELETE FROM toFuel WHERE id = ?" ;
             PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(query);
             stmt.setString(1, id);

@@ -14,7 +14,7 @@ public class DriverDao {
 	public static void create(DriverModel driver) {
 		int i = 1;
 		try {
-			Connection con = ConnectionDao.getInstanec().getConnection();
+			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			
 			String query = "INSERT INTO driver "
 									+ "(name, location, phone, cpf, habilitation, habilitationExpiration)"
@@ -45,7 +45,7 @@ public class DriverDao {
 		ArrayList drivers = new ArrayList();
 		DriverModel driver = null;
         try {
-            Connection con = ConnectionDao.getInstanec().getConnection();
+            Connection con = ConnectionSingleton.getInstanec().getConnection();
             String query = "SELECT * FROM driver WHERE 1";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
@@ -69,7 +69,7 @@ public class DriverDao {
 	public static DriverModel readUnit(String id) {
 		DriverModel driver = null;
 		try {
-			Connection con = ConnectionDao.getInstanec().getConnection();
+			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			String query = "SELECT * FROM driver WHERE id = ?";
 			PreparedStatement stmt =  (PreparedStatement) con.prepareStatement(query);
 			stmt.setString(1, id);
@@ -92,7 +92,7 @@ public class DriverDao {
 	public static void update(DriverModel driver) {
         int i = 1;
 		try {
-            Connection con = ConnectionDao.getInstanec().getConnection();
+            Connection con = ConnectionSingleton.getInstanec().getConnection();
             String query = "UPDATE driver SET"
             		+ " name = ?,  location= ?, phone = ?, cpf = ?, habilitation = ?, habilitationExpiration = ?"
             		+ " WHERE id = ?";
@@ -121,7 +121,7 @@ public class DriverDao {
 	
 	public static void delete(String id) {
         try {
-            Connection connection = ConnectionDao.getInstanec().getConnection();
+            Connection connection = ConnectionSingleton.getInstanec().getConnection();
             String query = "DELETE FROM driver WHERE id = ?" ;
             PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(query);
             stmt.setString(1, id);

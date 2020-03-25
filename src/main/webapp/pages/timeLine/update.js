@@ -4,9 +4,9 @@ const renderUpdateTimeline = (id) => {
 
          $.ajax({
              method: 'POST',
-             url: 'TimelineController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('update'),
+            	 action: ('timeline.UpdateTimeline'),
             	 id: id,
             	 date: $('#timeline-date').val(),
                  vehicle: $('#timeline-vehicle').val(),
@@ -87,8 +87,8 @@ const renderUpdateTimeline = (id) => {
     );
     $.ajax({
     	method: 'POST',
-        url: 'TimelineController',
-        data: {action: ('readUnit'), id:id},
+        url: 'ControllerFactory',
+        data: {action: ('timeline.ReadUnitTimeline'), id:id},
         success:(data) => {
         	console.log(data);
         	let timeline = JSON.parse(data);

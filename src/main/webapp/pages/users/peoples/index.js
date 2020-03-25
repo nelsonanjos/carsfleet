@@ -64,9 +64,9 @@ const renderPeoples = () => {
     const removeDataTable = (id) => {
         $.ajax({
             method: 'POST',
-            url: 'PeopleController',
+            url: 'ControllerFactory',
             data: {
-                action: ('delete'),
+                action: ('people.DeletePeople'),
                 id: id,
             },
         });
@@ -79,9 +79,9 @@ const renderPeoples = () => {
         tbody.attr('id', 'tbody-people');
         $.ajax({
             method: 'POST',
-            url: 'PeopleController',
+            url: 'ControllerFactory',
             data: {
-                action: ('read'),
+                action: ('people.ReadPeople'),
             },
             success: (data) => {
                 peoples = JSON.parse(data).peoples;

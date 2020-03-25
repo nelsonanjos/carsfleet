@@ -67,9 +67,9 @@ const renderTimeline = () => {
     const removeDataTable = (id) => {
         $.ajax({
             method: 'POST',
-            url: 'TimelineController',
+            url: 'ControllerFactory',
             data: {
-                action: ('delete'),
+                action: ('timeline.DeleteTimeline'),
                 id: id,
             },
         });
@@ -82,9 +82,9 @@ const renderTimeline = () => {
         tbody.attr('id', 'tbody-timeline');
         $.ajax({
             method: 'POST',
-            url: 'TimelineController',
+            url: 'ControllerFactory',
             data: {
-                action: ('read'),
+                action: ('timeline.ReadTimeline'),
             },
             success: (data) => {
                 timelines = JSON.parse(data).timelines;

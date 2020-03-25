@@ -67,9 +67,9 @@ const renderToFuel = () => {
     const removeDataTable = (id) => {
         $.ajax({
             method: 'POST',
-            url: 'ToFuelController',
+            url: 'ControllerFactory',
             data: {
-                action: ('delete'),
+                action: ('toFuel.DeleteToFuel'),
                 id: id,
             },
         });
@@ -82,9 +82,9 @@ const renderToFuel = () => {
         tbody.attr('id', 'tbody-toFuel');
         $.ajax({
             method: 'POST',
-            url: 'ToFuelController',
+            url: 'ControllerFactory',
             data: {
-                action: ('read'),
+                action: ('toFuel.ReadToFuel'),
             },
             success: (data) => {
                 toFuels = JSON.parse(data).toFuels;

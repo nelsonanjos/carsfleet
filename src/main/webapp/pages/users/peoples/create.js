@@ -4,9 +4,9 @@ const renderCreatePeople = () => {
 
          $.ajax({
              method: 'POST',
-             url: 'PeopleController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('create'),
+            	 action: ('people.CreatePeople'),
             	 name: $('#people-name').val(),
                  register: $('#people-register').val(),
                  cpf: $('#people-cpf').val(),

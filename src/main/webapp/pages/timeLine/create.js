@@ -4,9 +4,9 @@ const renderCreateTimeline = () => {
 
          $.ajax({
              method: 'POST',
-             url: 'TimelineController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('create'),
+            	 action: ('timeline.CreateTimeline'),
             	 date: $('#timeline-date').val(),
             	 vehicle: $('#timeline-vehicle').val(),
             	 driver: $('#timeline-driver').val(),

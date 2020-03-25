@@ -4,9 +4,9 @@ const renderUpdatePeople = (id) => {
 
          $.ajax({
              method: 'POST',
-             url: 'PeopleController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('update'),
+            	 action: ('people.UpdatePeople'),
             	 id: id,
             	 name: $('#people-name').val(),
                  register: $('#people-register').val(),
@@ -85,8 +85,8 @@ const renderUpdatePeople = (id) => {
     );
     $.ajax({
     	method: 'POST',
-        url: 'PeopleController',
-        data: {action: ('readUnit'), id:id},
+        url: 'ControllerFactory',
+        data: {action: ('people.ReadUnitPeople'), id:id},
         success:(data) => {
         let people = JSON.parse(data);
         

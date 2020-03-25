@@ -4,9 +4,9 @@ const renderCreateDriver = () => {
 
          $.ajax({
              method: 'POST',
-             url: 'DriverController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('create'),
+            	 action: ('driver.CreateDriver'),
                  name: $('#driver-name').val(),
                  location: $('#driver-location').val(),
                  phone: $('#driver-phone').val(),

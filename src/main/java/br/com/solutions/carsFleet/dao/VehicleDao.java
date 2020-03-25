@@ -16,7 +16,7 @@ public class VehicleDao {
 	public static void create(VehicleModel vehicle) {
 		int i = 1;
 		try {
-			Connection con = ConnectionDao.getInstanec().getConnection();
+			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			
 			String query = "INSERT INTO vehicle "
 									+ "(vtype, plate, brand, price, state, color, vyear, licensingExpiration)"
@@ -51,7 +51,7 @@ public class VehicleDao {
 		ArrayList vehicles = new ArrayList();
 		VehicleModel vehicle = null;
         try {
-            Connection con = ConnectionDao.getInstanec().getConnection();
+            Connection con = ConnectionSingleton.getInstanec().getConnection();
             String query = "SELECT * FROM vehicle WHERE 1";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
@@ -77,7 +77,7 @@ public class VehicleDao {
 	public static VehicleModel readUnit(String id) {
 		VehicleModel vehicle = null;
 		try {
-			Connection con = ConnectionDao.getInstanec().getConnection();
+			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			String query = "SELECT * FROM vehicle WHERE id = ?";
 			PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
 			stmt.setString(1, id);
@@ -102,7 +102,7 @@ public class VehicleDao {
 	public static void update(VehicleModel vehicle) {
         int i = 1;
 		try {
-            Connection con = ConnectionDao.getInstanec().getConnection();
+            Connection con = ConnectionSingleton.getInstanec().getConnection();
             String query = "UPDATE vehicle SET"
             		+ " vtype = ?,  plate= ?, brand = ?, price = ?, state = ?, color = ?,"
             		+" vyear = ?, licensingExpiration = ?"
@@ -136,7 +136,7 @@ public class VehicleDao {
 	
 	public static void delete(String id) {
         try {
-            Connection connection = ConnectionDao.getInstanec().getConnection();
+            Connection connection = ConnectionSingleton.getInstanec().getConnection();
             String query = "DELETE FROM vehicle WHERE id = ?" ;
             PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(query);
             stmt.setString(1, id);

@@ -4,9 +4,9 @@ const renderUpdateVehicle = (id) => {
 
          $.ajax({
              method: 'POST',
-             url: 'VehicleController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('update'),
+            	 action: ('vehicle.UpdateVehicle'),
             	 id: id,
             	 type: $('#vehicle-type').val(),
                  plate: $('#vehicle-plate').val(),
@@ -88,8 +88,8 @@ const renderUpdateVehicle = (id) => {
     );
     $.ajax({
     	method: 'POST',
-        url: 'VehicleController',
-        data: {action: ('readUnit'), id:id},
+        url: 'ControllerFactory',
+        data: {action: ('vehicle.ReadUnitVehicle'), id:id},
         success:(data) => {
         	let vehicle = JSON.parse(data);
         	

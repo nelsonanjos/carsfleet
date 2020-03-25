@@ -4,9 +4,9 @@ const renderUpdateDriver = (id) => {
 
          $.ajax({
              method: 'POST',
-             url: 'DriverController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('update'),
+            	 action: ('driver.UpdateDriver'),
             	 id: id,
             	 name: $('#driver-name').val(),
                  location: $('#driver-location').val(),
@@ -85,8 +85,8 @@ const renderUpdateDriver = (id) => {
     );
     $.ajax({
     	method: 'POST',
-        url: 'DriverController',
-        data: {action: ('readUnit'), id:id},
+        url: 'ControllerFactory',
+        data: {action: ('driver.ReadUnitDriver'), id:id},
         success:(data) => {
         	let driver = JSON.parse(data);
         	

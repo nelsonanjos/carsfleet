@@ -4,9 +4,9 @@ const renderCreateVehicle = () => {
 
          $.ajax({
              method: 'POST',
-             url: 'VehicleController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('create'),
+            	 action: ('vehicle.CreateVehicle'),
             	 type: $('#vehicle-type').val(),
                  plate: $('#vehicle-plate').val(),
                  brand: $('#vehicle-brand').val(),

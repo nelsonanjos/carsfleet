@@ -14,7 +14,7 @@ public class TimelineDao {
 	public static void create(TimelineModel timeline) {
 		int i = 1;
 		try {
-			Connection con = ConnectionDao.getInstanec().getConnection();
+			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			
 			String query = "INSERT INTO timeline "
 									+ "(date, vehicle, driver, startKm, finishKm, fail, maintenance)"
@@ -49,7 +49,7 @@ public class TimelineDao {
 		ArrayList timelines = new ArrayList();
 		TimelineModel timeline = null;
         try {
-            Connection con = ConnectionDao.getInstanec().getConnection();
+            Connection con = ConnectionSingleton.getInstanec().getConnection();
             String query = "SELECT * FROM timeline, vehicle, driver"
             					+ " WHERE"
             					+ " timeline.vehicle = vehicle.id and timeline.driver = driver.id";
@@ -76,7 +76,7 @@ public class TimelineDao {
 	public static TimelineModel readUnit(String id) {
 		TimelineModel timeline = null;
 		try {
-			Connection con = ConnectionDao.getInstanec().getConnection();
+			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			String query = "SELECT * FROM timeline, vehicle, driver"
 								+ " WHERE"
 									+ " timeline.id = ? and  timeline.vehicle = vehicle.id and timeline.driver = driver.id";
@@ -103,7 +103,7 @@ public class TimelineDao {
 	public static void update(TimelineModel timeline) {
         int i = 1;
 		try {
-            Connection con = ConnectionDao.getInstanec().getConnection();
+            Connection con = ConnectionSingleton.getInstanec().getConnection();
             String query = "UPDATE timeline SET"
             							+ " date = ?,"
             							+ " vehicle = (SELECT id FROM vehicle WHERE  plate = ?),"
@@ -137,7 +137,7 @@ public class TimelineDao {
 	
 	public static void delete(String id) {
         try {
-            Connection connection = ConnectionDao.getInstanec().getConnection();
+            Connection connection = ConnectionSingleton.getInstanec().getConnection();
             String query = "DELETE FROM timeline WHERE id = ?" ;
             PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(query);
             stmt.setString(1, id);

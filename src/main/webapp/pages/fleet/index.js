@@ -64,9 +64,9 @@ const renderFleet = () => {
 	const removeDataTable = (id) => {
 		$.ajax({
 			method: 'POST',
-			url: 'VehicleController',
+			url: 'ControllerFactory',
 			data: {
-				action: ('delete'),
+				action: ('vehicle.DeleteVehicle'),
 				id: id,
 			},
 		});
@@ -79,9 +79,9 @@ const renderFleet = () => {
 		tbody.attr('id', 'tbody-fleet');
 		$.ajax({
 	        method: 'POST',
-	        url: 'VehicleController',
+	        url: 'ControllerFactory',
 	        data: {
-	       	 action: ('read'),
+	       	 action: ('vehicle.ReadVehicle'),
 	        },
 	        success: (data) => {
 	        	vehicles = JSON.parse(data).vehicles;

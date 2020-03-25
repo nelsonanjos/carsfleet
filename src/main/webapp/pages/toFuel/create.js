@@ -4,9 +4,9 @@ const renderCreateToFuel = () => {
 
          $.ajax({
              method: 'POST',
-             url: 'ToFuelController',
+             url: 'ControllerFactory',
              data: {
-            	 action: ('create'),
+            	 action: ('toFuel.CreateToFuel'),
             	 fuelStation: $('#toFuel-station').val(),
             	 vehicle: $('#toFuel-vehicle').val(),
             	 driver: $('#toFuel-driver').val(),
@@ -16,6 +16,8 @@ const renderCreateToFuel = () => {
                  vehicleKm: $('#toFuel-km').val(),
              },
          })
+         renderToFuel();
+         
     }
 
     const var_menu_module = $("#menu-module");

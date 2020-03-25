@@ -65,9 +65,9 @@ const renderDriver = () => {
 	const removeDataTable = (id) => {
 		$.ajax({
 			method: 'POST',
-			url: 'DriverController',
+			url: 'ControllerFactory',
 			data: {
-				action: ('delete'),
+				action: ('driver.DeleteDriver'),
 				id: id,
 			},
 		});
@@ -80,9 +80,9 @@ const renderDriver = () => {
 		tbody.attr('id', 'tbody-driver');
 		$.ajax({
 	        method: 'POST',
-	        url: 'DriverController',
+	        url: 'ControllerFactory',
 	        data: {
-	       	 action: ('read'),
+	       	 action: ('driver.ReadDriver'),
 	        },
 	        success: (data) => {
 	        	drivers = JSON.parse(data).drivers;
