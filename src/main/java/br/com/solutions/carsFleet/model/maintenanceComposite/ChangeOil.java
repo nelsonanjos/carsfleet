@@ -1,4 +1,4 @@
-package br.com.solutions.carsFleet.model.composite;
+package br.com.solutions.carsFleet.model.maintenanceComposite;
 
 public class ChangeOil extends Maintenance{
 	private static String name = "Change Oil";

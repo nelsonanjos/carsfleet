@@ -11,10 +11,12 @@ import br.com.solutions.carsFleet.model.PeopleModel;
 
 public class PeopleDao {
 	
+	private static ConnectionSingleton connectionSingleton;
+	
 	public static void create(PeopleModel people) {
 		int i = 1;
 		try {
-			Connection con = ConnectionSingleton.getInstanec().getConnection();
+			Connection con = connectionSingleton.getInstanec().getConnection();
 			
 			String query = "INSERT INTO people"
 									+ " (name, register, cpf, user, password, pgroup)"
@@ -46,7 +48,7 @@ public class PeopleDao {
 		ArrayList peoples = new ArrayList();
 		PeopleModel people = null;
         try {
-            Connection con = ConnectionSingleton.getInstanec().getConnection();
+            Connection con = connectionSingleton.getInstanec().getConnection();
             String query = "SELECT * FROM people WHERE 1";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
@@ -69,7 +71,7 @@ public class PeopleDao {
 	public static PeopleModel readUnit(String id) {
 		PeopleModel people = null;
 		try {
-			Connection con = ConnectionSingleton.getInstanec().getConnection();
+			Connection con = connectionSingleton.getInstanec().getConnection();
 			String query = "SELECT * FROM people WHERE id = ?";
 			PreparedStatement stmt =  (PreparedStatement) con.prepareStatement(query);
 			stmt.setString(1, id);
@@ -92,7 +94,7 @@ public class PeopleDao {
 	public static void update(PeopleModel people) {
         int i = 1;
 		try {
-            Connection con = ConnectionSingleton.getInstanec().getConnection();
+            Connection con = connectionSingleton.getInstanec().getConnection();
             String query = "UPDATE people SET"
             		+ " name = ?,  register= ?, cpf = ?,  user = ?, password = ?, pgroup = ?"
             		+ " WHERE id = ?";
@@ -121,7 +123,7 @@ public class PeopleDao {
 	
 	public static void delete(String id) {
         try {
-            Connection connection = ConnectionSingleton.getInstanec().getConnection();
+            Connection connection = connectionSingleton.getInstanec().getConnection();
             String query = "DELETE FROM people WHERE id = ?" ;
             PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(query);
             stmt.setString(1, id);

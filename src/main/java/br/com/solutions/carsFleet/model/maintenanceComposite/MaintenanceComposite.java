@@ -1,4 +1,4 @@
-package br.com.solutions.carsFleet.model.composite;
+package br.com.solutions.carsFleet.model.maintenanceComposite;
 import java.util.ArrayList;
 
 public class MaintenanceComposite extends Maintenance{

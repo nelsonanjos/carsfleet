@@ -8,15 +8,13 @@ import java.sql.SQLException;
 import java.sql.Connection;
 
 public class ConnectionSingleton {
-    String caminho = "localhost";
-    String porta =  "3305";
-    String nome = "carsFleet";
-    String usuario = "root";
-    String senha = "";
+	private String address = "localhost";
+	private String port =  "3305";
+	private String db = "carsFleet";
+	private String USER = "root";
+	private String PASS = "";
 
-    private final String URL = "jdbc:mysql://" + caminho + ":" + porta + "/" + nome + "?useTimezone=true&serverTimezone=GMT"; //lerCaminhoDoSrv();
-    private final String USER = usuario;
-    private final String PASS = senha;
+    private final String URL = "jdbc:mysql://" + address + ":" + port + "/" + db + "?useTimezone=true&serverTimezone=GMT"; //lerCaminhoDoSrv();
     private static ConnectionSingleton connectionDao;
 
     public static ConnectionSingleton getInstanec() {

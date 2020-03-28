@@ -1,4 +1,4 @@
-package br.com.solutions.carsFleet.model.composite;
+package br.com.solutions.carsFleet.model.maintenanceComposite;
 
 public abstract class Maintenance {
 	private String name;

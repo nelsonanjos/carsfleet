@@ -1,4 +1,4 @@
-package br.com.solutions.carsFleet.model.composite;
+package br.com.solutions.carsFleet.model.maintenanceComposite;
 
 public class Candles extends Maintenance{
 	private static String name = "Candles";

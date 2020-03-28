@@ -6,15 +6,15 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.solutions.carsFleet.controller.ControllerCommand;
 import br.com.solutions.carsFleet.dao.TimelineDao;
 import br.com.solutions.carsFleet.model.TimelineModel;
-import br.com.solutions.carsFleet.model.composite.AirFilters;
-import br.com.solutions.carsFleet.model.composite.Alignment;
-import br.com.solutions.carsFleet.model.composite.Balacing;
-import br.com.solutions.carsFleet.model.composite.Brake;
-import br.com.solutions.carsFleet.model.composite.Candles;
-import br.com.solutions.carsFleet.model.composite.ChangeFuelFilter;
-import br.com.solutions.carsFleet.model.composite.ChangeOil;
-import br.com.solutions.carsFleet.model.composite.Maintenance;
-import br.com.solutions.carsFleet.model.composite.MaintenanceComposite;
+import br.com.solutions.carsFleet.model.maintenanceComposite.AirFilters;
+import br.com.solutions.carsFleet.model.maintenanceComposite.Alignment;
+import br.com.solutions.carsFleet.model.maintenanceComposite.Balacing;
+import br.com.solutions.carsFleet.model.maintenanceComposite.Brake;
+import br.com.solutions.carsFleet.model.maintenanceComposite.Candles;
+import br.com.solutions.carsFleet.model.maintenanceComposite.ChangeFuelFilter;
+import br.com.solutions.carsFleet.model.maintenanceComposite.ChangeOil;
+import br.com.solutions.carsFleet.model.maintenanceComposite.Maintenance;
+import br.com.solutions.carsFleet.model.maintenanceComposite.MaintenanceComposite;
 
 public class UpdateTimeline implements ControllerCommand{
 	@Override
