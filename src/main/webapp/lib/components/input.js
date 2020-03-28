@@ -6,6 +6,8 @@ const Input = (props) => {
         var_name,
         var_placeholder,
         var_value = '',
+        var_readOnly = false,
+        var_action = null,
     } = props;
 
     var input = $('<input></input>');
@@ -17,5 +19,7 @@ const Input = (props) => {
     input.attr('name', var_name);
     input.attr('placeholder', var_placeholder);
     input.attr('value', var_value);
+    input.attr('readonly', var_readOnly);
+    input.click(var_action);
     return input;
 }

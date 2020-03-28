@@ -17,10 +17,10 @@ public class TimelineDao {
 			Connection con = ConnectionSingleton.getInstanec().getConnection();
 			
 			String query = "INSERT INTO timeline "
-									+ "(date, vehicle, driver, startKm, finishKm, fail, maintenance)"
+									+ "(date, vehicle, driver, startKm, finishKm, fail, typeMaintenance, maintenance)"
 									+ "VALUES (?,"
 									+ "(SELECT id FROM vehicle WHERE plate = ?),"
-									+ "(SELECT id FROM driver WHERE cpf = ?),?,?,?,?)";
+									+ "(SELECT id FROM driver WHERE cpf = ?),?,?,?,?,?)";
 			PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
 			stmt.setString(i, timeline.getDate());
 			i++;
@@ -33,6 +33,8 @@ public class TimelineDao {
 			stmt.setString(i, timeline.getFinishKm());
 			i++;
 			stmt.setString(i, timeline.getFail());
+			i++;
+			stmt.setString(i, timeline.getTypeMaintenance());
 			i++;
 			stmt.setString(i, timeline.getMaintenance());
 			
@@ -64,6 +66,7 @@ public class TimelineDao {
             	timeline.setStartKm(rs.getString("startKm"));
             	timeline.setFinishKm(rs.getString("finishKm"));
             	timeline.setFail(rs.getString("fail"));
+            	timeline.setTypeMaintenance(rs.getString("typeMaintenance"));
             	timeline.setMaintenance(rs.getString("maintenance"));
             	timelines.add(timeline);
             }
@@ -92,6 +95,7 @@ public class TimelineDao {
 				timeline.setStartKm(rs.getString("startKm"));
 				timeline.setFinishKm(rs.getString("finishKm"));
 				timeline.setFail(rs.getString("fail"));
+				timeline.setTypeMaintenance(rs.getString("typeMaintenance"));
 				timeline.setMaintenance(rs.getString("maintenance"));
 			}
 		} catch (Exception e) {
@@ -108,7 +112,7 @@ public class TimelineDao {
             							+ " date = ?,"
             							+ " vehicle = (SELECT id FROM vehicle WHERE  plate = ?),"
             							+ " driver = (SELECT id FROM driver WHERE cpf = ?),"
-            							+ " startKm = ?, finishKm = ?, fail = ?, maintenance = ?"
+            							+ " startKm = ?, finishKm = ?, fail = ?, typeMaintenance = ?, maintenance = ?"
             					+ " WHERE id = ?";
             PreparedStatement stmt = (PreparedStatement) con.prepareStatement(query);
             
@@ -123,6 +127,8 @@ public class TimelineDao {
             stmt.setString(i, timeline.getFinishKm());
             i++;
             stmt.setString(i, timeline.getFail());
+            i++;
+            stmt.setString(i, timeline.getTypeMaintenance());
             i++;
             stmt.setString(i, timeline.getMaintenance());
             i++;

@@ -5,7 +5,7 @@
 
 body {
 	
-    background: #e2e2e2;
+    background: #34495e;
 }
 
 h1{
@@ -56,7 +56,7 @@ label {
 input {
 	border: solid 0.5px #5f758d;
 	border-radius: 2px;
-	background: #e2e2e2;
+	background: #f3f3f3;
 	height: 35px;
 	width: 500px;
 	margin: 10px;
@@ -336,13 +336,14 @@ header {
 /***MAIN CONTENT*******************/
 #content {
     position: absolute;
-    height: auto;
+    min-height: 94.9%;
     padding-top: 3.1%;
     z-index: -3;
+    background: #eaeaea;
 }
 
 .content-close {
-	padding-left: 17.6%;
+	margin-left: 17.6%;
 	width: 82.4%;    
     animation-duration: 0.5s;
     animation-name: contentOpen;	
@@ -351,17 +352,17 @@ header {
 @keyframes contentOpen {
 	from {
 		width: 93.4%;
-		padding-left: 7%;
+		margin-left: 7%;
 	}	
 	to {
 		width: 82.4%;
-		padding-left: 17.6%;
+		margin-left: 17.6%;
 	}
 }
 
 .content-open {
-	padding-left: 7%;
-	width: 93.4%;
+	margin-left: 4%;
+	width: 96%;
 	animation-duration: 0.5s;
     animation-name: contentClose;	
 }
@@ -369,11 +370,11 @@ header {
 @keyframes contentClose {
 	from {
 		width: 82.4%;
-		padding-left: 17.6%;
+		margin-left: 17.6%;
 	}	
 	to {
 		width: 93.4%;
-		padding-left: 7%;
+		margin-left: 7%;
 	}
 }
 
@@ -490,6 +491,45 @@ th {
 }
 .btn-table-remove i:before {
 	content: url('../icons/trash.svg');
+}
+
+.container-add-maintenance {
+	position: relative;
+	margin-top: -10px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	padding-bottom: 10px
+	height: auto;
+	width: 500px;
+	border: solid 1px #757f9a;
+	border-radius: 2px;
+	background: #babdb6;
+}
+
+.btn-add-maintenance {
+	font-size: 14px;
+	height: 30px;
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	border: solid 1px #0d61a0;
+	background: #d4d3d3;
+	color: #000000;
+}
+
+.btn-add-maintenance:hover {
+	background: #0d61a0;
+	color: #d4d3d3;
+}
+
+.btn-clean-maintenance {
+	font-size: 14px;
+	height: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background: #a40000;
 }
 
 

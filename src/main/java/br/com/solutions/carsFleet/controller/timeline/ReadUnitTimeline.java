@@ -21,6 +21,7 @@ public class ReadUnitTimeline implements ControllerCommand{
 			out.print(",\"startKm\":\""+timeline.getStartKm()+"\"");			
 			out.print(",\"finishKm\":\""+timeline.getFinishKm()+"\"");			
 			out.print(",\"fail\":\""+timeline.getFail()+"\"");			
+			out.print(",\"typeMaintenance\":\""+timeline.getTypeMaintenance()+"\"");
 			out.print(",\"maintenance\":\""+timeline.getMaintenance()+"\"}");	
 		} catch (Exception e) {
 			System.out.println(e);

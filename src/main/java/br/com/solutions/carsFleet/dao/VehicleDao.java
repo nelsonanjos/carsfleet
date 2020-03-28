@@ -1,12 +1,10 @@
 package br.com.solutions.carsFleet.dao;
 
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.fabric.xmlrpc.base.Value;
 import com.mysql.jdbc.PreparedStatement;
 
 import br.com.solutions.carsFleet.model.VehicleModel;

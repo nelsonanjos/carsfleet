@@ -8,6 +8,7 @@ public class TimelineModel {
 	private String startKm;
 	private String finishKm;
 	private String fail;
+	private String typeMaintenance;
 	private String maintenance;
 	
 	
@@ -52,6 +53,12 @@ public class TimelineModel {
 	}
 	public void setFail(String fail) {
 		this.fail = fail;
+	}
+	public String getTypeMaintenance() {
+		return typeMaintenance;
+	}
+	public void setTypeMaintenance(String typeMaintenance) {
+		this.typeMaintenance = typeMaintenance;
 	}
 	public String getMaintenance() {
 		return maintenance;

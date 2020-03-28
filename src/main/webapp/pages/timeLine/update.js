@@ -1,5 +1,5 @@
 const renderUpdateTimeline = (id) => {
-
+	let getMaintenance = null;
     const handleSubmit = () => {
 
          $.ajax({
@@ -14,7 +14,7 @@ const renderUpdateTimeline = (id) => {
                  startKm: $('#timeline-startKm').val(),
                  finishKm: $('#timeline-finishKm').val(),
                  fail: $('#timeline-fail').val(),
-                 maintenance: $('#timeline-maintenance').val(),
+                 maintenance: getMaintenance,
              },
          })
     }
@@ -90,7 +90,6 @@ const renderUpdateTimeline = (id) => {
         url: 'ControllerFactory',
         data: {action: ('timeline.ReadUnitTimeline'), id:id},
         success:(data) => {
-        	console.log(data);
         	let timeline = JSON.parse(data);
         	
         	var_form.append('Timeline date');
@@ -159,10 +158,144 @@ const renderUpdateTimeline = (id) => {
                     var_class: 'input-field',
                     var_date: 'timeline-maintenance',
                     var_value: timeline.maintenance,
+                    var_readOly: 'true',
+                    var_action: e => renderButtonsAddMaintenance(),
                 })
             );
+            
+          //=Buttons for add Maintenances================================================
 
-            var_module.append(var_form);
+        let divBtnsAddMaintenance = null;
+        const addMaintenance = maintenance => {
+        	$('#timeline-maintenance').attr('value', maintenance);
+        }
+        
+        const renderButtonsAddMaintenance = () => {
+        	if(!$('#container-add-maintenance').length){
+    	    	divBtnsAddMaintenance = $('<div></div>');
+    	    	divBtnsAddMaintenance.attr('class', 'container-add-maintenance');
+    	    	divBtnsAddMaintenance.attr('id', 'container-add-maintenance');
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Preventive",
+    	    				var_event: "click",
+    	    				var_action: e => {addMaintenance(
+    	    						'Preventive (Maintenance in Brake ,'+  
+    	    						'Air Filters, Candles, '+
+    	    				'Alignment e Balancing).'); getMaintenance = "Preventive";},
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Corrective",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    						'Corrective (Change of Oil, '+ 
+    	    				'Brake, Fuel Filter).'); getMaintenance = "Corrective";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Brake",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				'Maintenance in Brake'); getMaintenance = "Brake";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Air Filters",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				'Maintenance in Air Filters'); getMaintenance = "AirFilters";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Candles",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				'Maintenance in Candles'); getMaintenance = "Candles";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Alignment",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				'Alignment'); getMaintenance = "Alignment";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Balacing",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				'Balacing'); getMaintenance = "Balacing";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Change Oil",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				'Change Oil'); getMaintenance = "ChangeOil";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Change Brake",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				'Change Brake'); getMaintenance = "ChangeBrake";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-add-maintenance",
+    	    				var_text: "Change Fuel Filter",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				'Change Fuel Filter'); getMaintenance = "ChangeFuelFilter";}),
+    	    			})
+    	    	);
+    	    	
+    	    	divBtnsAddMaintenance.append(
+    	    			Button({
+    	    				var_class: "btn-clean-maintenance",
+    	    				var_text: "Clean",
+    	    				var_event: "click",
+    	    				var_action: (e => {addMaintenance(
+    	    				''); getMaintenance = null;}),
+    	    			})
+    	    	);
+        	
+    	    	var_form.append(divBtnsAddMaintenance)
+        	} else {
+        		divBtnsAddMaintenance.remove();
+        	}
+    	}
+
+        var_module.append(var_form);
         }
     })
 
