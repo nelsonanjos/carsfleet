@@ -18,9 +18,13 @@ import br.com.solutions.carsFleet.model.maintenanceComposite.MaintenanceComposit
 
 public class CreateTimeline implements ControllerCommand{
 
+	private TimelineModel timeline = null;
+	private TimelineDao timelineDao;
+	private Maintenance maintenance = null;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		TimelineModel timeline = new TimelineModel();
+		timeline = new TimelineModel();
 		
 		 String date = request.getParameter("date");
 		 String vehicle = request.getParameter("vehicle");
@@ -29,26 +33,26 @@ public class CreateTimeline implements ControllerCommand{
 		 String finishKm = request.getParameter("finishKm");
 		 String fail = request.getParameter("fail");
 		 String typeMaintenance = request.getParameter("maintenance");
-		 String maintenance = "";
+		 String descriptionMaintenance = "";
 		 
 		 switch (typeMaintenance) {
 			case "Preventive":
-				Maintenance preventive = new MaintenanceComposite("Preventive");
-				preventive.add(new Brake());
-				preventive.add(new AirFilters());
-				preventive.add(new Candles());
-				preventive.add(new Alignment());
-				preventive.add(new Balacing());
+				maintenance = new MaintenanceComposite("Preventive");
+				maintenance.add(new Brake());
+				maintenance.add(new AirFilters());
+				maintenance.add(new Candles());
+				maintenance.add(new Alignment());
+				maintenance.add(new Balacing());
 				
-				maintenance = preventive.toString();
+				descriptionMaintenance = maintenance.toString();
 				break;
 			case "Corrective":
-				Maintenance corrective = new MaintenanceComposite("Corrective");
-				corrective.add(new ChangeOil());
-				corrective.add(new Brake());
-				corrective.add(new ChangeFuelFilter());
+				maintenance = new MaintenanceComposite("Corrective");
+				maintenance.add(new ChangeOil());
+				maintenance.add(new Brake());
+				maintenance.add(new ChangeFuelFilter());
 				
-				maintenance = corrective.toString();
+				descriptionMaintenance = maintenance.toString();
 				break;
 			default:
 				try {
@@ -56,9 +60,9 @@ public class CreateTimeline implements ControllerCommand{
 					String nameClass = packageClass+ typeMaintenance;
 					Class<?> classMaintenance = Class.forName(nameClass);
 					
-					Maintenance ObjMaintenance = (Maintenance) classMaintenance.newInstance();
+					maintenance = (Maintenance) classMaintenance.newInstance();
 					
-					maintenance = ObjMaintenance.toString();
+					descriptionMaintenance = maintenance.toString();
 				} catch (Exception e) {
 					
 					e.printStackTrace();
@@ -73,9 +77,9 @@ public class CreateTimeline implements ControllerCommand{
 		 timeline.setFinishKm(finishKm);
 		 timeline.setFail(fail);
 		 timeline.setTypeMaintenance(typeMaintenance);
-		 timeline.setMaintenance(maintenance);
+		 timeline.setMaintenance(descriptionMaintenance);
 		 
-		 TimelineDao.create(timeline);
+		 timelineDao.create(timeline);
 		
 	}
 	
