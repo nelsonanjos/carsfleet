@@ -58,7 +58,7 @@ public class UpdateTimeline implements ControllerCommand{
 				break;
 			default:
 				try {
-					String packageClass = "br.com.solutions.carsFleet.model.composite.";
+					String packageClass = "br.com.solutions.carsFleet.model.maintenanceComposite.";
 					String nameClass = packageClass + typeMaintenance;
 					Class<?> classMaintenance = Class.forName(nameClass);
 					
