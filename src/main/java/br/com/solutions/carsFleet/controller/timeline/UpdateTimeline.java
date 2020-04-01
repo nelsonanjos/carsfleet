@@ -17,9 +17,14 @@ import br.com.solutions.carsFleet.model.maintenanceComposite.Maintenance;
 import br.com.solutions.carsFleet.model.maintenanceComposite.MaintenanceComposite;
 
 public class UpdateTimeline implements ControllerCommand{
+	
+	private TimelineModel timeline = null;
+	private TimelineDao timelineDao;
+	
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		TimelineModel timeline = new TimelineModel();
+		timeline = new TimelineModel();
 		
 		 String id = request.getParameter("id");
 		 String date = request.getParameter("date");
@@ -76,6 +81,6 @@ public class UpdateTimeline implements ControllerCommand{
 		 timeline.setTypeMaintenance(typeMaintenance);
 		 timeline.setMaintenance(maintenance);
 		 
-		 TimelineDao.update(timeline);
+		 timelineDao.update(timeline);
 	}
 }

@@ -8,9 +8,13 @@ import br.com.solutions.carsFleet.dao.ToFuelDao;
 import br.com.solutions.carsFleet.model.ToFuelModel;
 
 public class UpdateToFuel implements ControllerCommand{
+	
+	private ToFuelModel toFuel = null;
+	private ToFuelDao toFuelDao;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		ToFuelModel toFuel = new ToFuelModel();
+		toFuel = new ToFuelModel();
 		
 		 String id = request.getParameter("id");
 		 String date = request.getParameter("date");
@@ -31,6 +35,6 @@ public class UpdateToFuel implements ControllerCommand{
 		 toFuel.setVehicleKm(vehicleKm);
 		 
 		 
-		 ToFuelDao.update(toFuel);
+		 toFuelDao.update(toFuel);
 	}
 }

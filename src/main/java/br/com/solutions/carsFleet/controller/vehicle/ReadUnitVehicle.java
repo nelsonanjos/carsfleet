@@ -10,10 +10,14 @@ import br.com.solutions.carsFleet.dao.VehicleDao;
 import br.com.solutions.carsFleet.model.VehicleModel;
 
 public class ReadUnitVehicle implements ControllerCommand{
+	
+	private VehicleModel vehicle = null;
+	private VehicleDao vehicleDao;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			VehicleModel vehicle = VehicleDao.readUnit(request.getParameter("id"));
+			vehicle = vehicleDao.readUnit(request.getParameter("id"));
 			PrintWriter out  = response.getWriter();
 			out.print("{\"type\":\""+vehicle.getType()+"\"");			
 			out.print(",\"plate\":\""+vehicle.getPlate()+"\"");			

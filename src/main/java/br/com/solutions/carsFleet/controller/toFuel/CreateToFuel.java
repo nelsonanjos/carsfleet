@@ -8,10 +8,13 @@ import br.com.solutions.carsFleet.dao.ToFuelDao;
 import br.com.solutions.carsFleet.model.ToFuelModel;
 
 public class CreateToFuel implements ControllerCommand{
+	
+	private ToFuelModel toFuel = null;
+	private ToFuelDao toFuelDao;
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		ToFuelModel toFuel = new ToFuelModel();
+		toFuel = new ToFuelModel();
 		
 		 String date = request.getParameter("date");
 		 String vehicle = request.getParameter("vehicle");
@@ -29,7 +32,7 @@ public class CreateToFuel implements ControllerCommand{
 		 toFuel.setPrice(price);
 		 toFuel.setVehicleKm(vehicleKm);
 		 
-		 ToFuelDao.create(toFuel);
+		 toFuelDao.create(toFuel);
 		
 	}
 	

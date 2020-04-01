@@ -10,10 +10,14 @@ import br.com.solutions.carsFleet.dao.PeopleDao;
 import br.com.solutions.carsFleet.model.PeopleModel;
 
 public class ReadUnitPeople implements ControllerCommand{
+	
+	private PeopleModel people = null;
+	private PeopleDao peopleDao;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			PeopleModel people = PeopleDao.readUnit(request.getParameter("id"));
+			people = peopleDao.readUnit(request.getParameter("id"));
 			PrintWriter out  = response.getWriter();
 			out.print("{\"name\":\""+people.getName()+"\"");			
 			out.print(",\"register\":\""+people.getRegister()+"\"");			

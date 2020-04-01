@@ -10,10 +10,14 @@ import br.com.solutions.carsFleet.dao.ToFuelDao;
 import br.com.solutions.carsFleet.model.ToFuelModel;
 
 public class ReadUnitToFuel implements ControllerCommand{
+	
+	private ToFuelModel toFuel = null;
+	private ToFuelDao  toFuelDao;
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			ToFuelModel toFuel = ToFuelDao.readUnit(request.getParameter("id"));
+			toFuel = toFuelDao.readUnit(request.getParameter("id"));
 			PrintWriter out  = response.getWriter();
 			out.print("{\"date\":\""+toFuel.getDate()+"\"");			
 			out.print(",\"vehicle\":\""+toFuel.getVehicle()+"\"");			

@@ -7,11 +7,14 @@ import br.com.solutions.carsFleet.controller.ControllerCommand;
 import br.com.solutions.carsFleet.dao.ToFuelDao;
 
 public class DeleteToFuel implements 	ControllerCommand{
+	
+	private ToFuelDao toFuelDao;
+	private String id;
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		ToFuelDao.delete(id);
+		id = request.getParameter("id");
+		toFuelDao.delete(id);
 	}
 
 }

@@ -7,11 +7,14 @@ import br.com.solutions.carsFleet.controller.ControllerCommand;
 import br.com.solutions.carsFleet.dao.VehicleDao;
 
 public class DeleteVehicle implements 	ControllerCommand{
+	
+	private VehicleDao vehicleDao;
+	private String id;
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		VehicleDao.delete(id);
+		id = request.getParameter("id");
+		vehicleDao.delete(id);
 	}
 
 }

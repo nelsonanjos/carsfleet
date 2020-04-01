@@ -8,10 +8,15 @@ import br.com.solutions.carsFleet.dao.DriverDao;
 import br.com.solutions.carsFleet.model.DriverModel;
 
 public class UpdateDriver implements ControllerCommand{
+	
+	private DriverModel driver = null;
+	private DriverDao driverDao;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		 DriverModel driver = new DriverModel();
-			
+		
+		driver = new DriverModel();
+		
 		 String id = request.getParameter("id");
 		 String name = request.getParameter("name");
 		 String location = request.getParameter("location");
@@ -29,6 +34,6 @@ public class UpdateDriver implements ControllerCommand{
 		 driver.setHabilitationExpiration(expirationHabilitation);
 		 
 		 
-		 DriverDao.update(driver);
+		 driverDao.update(driver);
 	}
 }

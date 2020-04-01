@@ -8,10 +8,13 @@ import br.com.solutions.carsFleet.dao.TimelineDao;
 
 public class DeleteTimeline implements 	ControllerCommand{
 
+	private TimelineDao timelineDao;
+	private String id;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		TimelineDao.delete(id);
+		 id = request.getParameter("id");
+		timelineDao.delete(id);
 	}
 
 }

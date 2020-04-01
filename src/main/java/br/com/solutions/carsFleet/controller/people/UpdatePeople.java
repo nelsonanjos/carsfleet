@@ -8,9 +8,13 @@ import br.com.solutions.carsFleet.dao.PeopleDao;
 import br.com.solutions.carsFleet.model.PeopleModel;
 
 public class UpdatePeople implements ControllerCommand{
+	
+	private PeopleModel people = null;
+	private PeopleDao peopleDao;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		PeopleModel people = new PeopleModel();
+		people = new PeopleModel();
 		
 		 String id = request.getParameter("id");
 		 String name = request.getParameter("name");
@@ -29,6 +33,6 @@ public class UpdatePeople implements ControllerCommand{
 		 people.setGroup(group);
 		 
 		 
-		 PeopleDao.update(people);
+		 peopleDao.update(people);
 	}
 }

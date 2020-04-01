@@ -8,10 +8,13 @@ import br.com.solutions.carsFleet.dao.PeopleDao;
 import br.com.solutions.carsFleet.model.PeopleModel;
 
 public class CreatePeople implements ControllerCommand{
+	
+	private PeopleModel people;
+	private PeopleDao peopleDao; 
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		PeopleModel people = new PeopleModel();
+		people = new PeopleModel();
 		
 		 String name = request.getParameter("name");
 		 String register = request.getParameter("register");
@@ -28,8 +31,7 @@ public class CreatePeople implements ControllerCommand{
 		 people.setPassword(password);
 		 people.setGroup(group);
 		 
-		 PeopleDao.create(people);
-		
+		 peopleDao.create(people);
 	}
 	
 }

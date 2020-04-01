@@ -10,10 +10,14 @@ import br.com.solutions.carsFleet.dao.TimelineDao;
 import br.com.solutions.carsFleet.model.TimelineModel;
 
 public class ReadUnitTimeline implements ControllerCommand{
+	
+	private TimelineModel timeline = null;
+	private TimelineDao timelineDao;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			TimelineModel timeline = TimelineDao.readUnit(request.getParameter("id"));
+			timeline = timelineDao.readUnit(request.getParameter("id"));
 			PrintWriter out  = response.getWriter();
 			out.print("{\"date\":\""+timeline.getDate()+"\"");			
 			out.print(",\"vehicle\":\""+timeline.getVehicle()+"\"");			

@@ -10,10 +10,14 @@ import br.com.solutions.carsFleet.dao.DriverDao;
 import br.com.solutions.carsFleet.model.DriverModel;
 
 public class ReadUnitDriver implements ControllerCommand{
+	
+	private DriverModel driver = null;
+	private DriverDao driverDao;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			DriverModel driver = DriverDao.readUnit(request.getParameter("id"));
+			driver = driverDao.readUnit(request.getParameter("id"));
 			PrintWriter out  = response.getWriter();
 			out.print("{\"name\":\""+driver.getName()+"\"");			
 			out.print(",\"phone\":\""+driver.getPhone()+"\"");			

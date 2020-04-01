@@ -9,9 +9,13 @@ import br.com.solutions.carsFleet.model.DriverModel;
 
 public class CreateDriver implements ControllerCommand{
 
+	private DriverModel driver = null;
+	private DriverDao driverDao;
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		 DriverModel driver = new DriverModel();
+		
+		driver = new DriverModel();
 		
 		 String name = request.getParameter("name");
 		 String location = request.getParameter("location");
@@ -27,7 +31,7 @@ public class CreateDriver implements ControllerCommand{
 		 driver.setHabilitation(habilitation);
 		 driver.setHabilitationExpiration(habilitationExpiration);
 		 
-		 DriverDao.create(driver);
+		 driverDao.create(driver);
 		
 	}
 	

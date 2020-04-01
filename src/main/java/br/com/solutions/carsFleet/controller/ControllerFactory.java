@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ControllerFactory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private ControllerCommand actionCommand;
+	private Class<?> actionClass;
 	 public ControllerFactory() {
 		 super();
 	 }
@@ -22,8 +24,8 @@ public class ControllerFactory extends HttpServlet {
 			String actionParameter = request.getParameter("action");
 			String className = packageClass + actionParameter;
 			
-			Class actionClass = Class.forName(className);
-			ControllerCommand actionCommand = (ControllerCommand) actionClass.newInstance(); 
+			actionClass = Class.forName(className);
+			actionCommand = (ControllerCommand) actionClass.newInstance(); 
 			actionCommand.execute(request, response);
 		} catch (Exception e) {
 			System.out.println("Error: "+e);

@@ -7,11 +7,14 @@ import br.com.solutions.carsFleet.controller.ControllerCommand;
 import br.com.solutions.carsFleet.dao.DriverDao;
 
 public class DeleteDriver implements 	ControllerCommand{
-
+	
+	private DriverDao driverDao; 
+	private String id = "";
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		DriverDao.delete(id);
+		id = request.getParameter("id");
+		driverDao.delete(id);
 	}
 
 }

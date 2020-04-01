@@ -8,10 +8,13 @@ import br.com.solutions.carsFleet.dao.PeopleDao;
 
 public class DeletePeople implements 	ControllerCommand{
 
+	private PeopleDao peopleDao;
+	private String id;
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		PeopleDao.delete(id);
+		id = request.getParameter("id");
+		peopleDao.delete(id);
 	}
 
 }

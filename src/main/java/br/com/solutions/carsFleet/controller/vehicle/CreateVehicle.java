@@ -8,10 +8,13 @@ import br.com.solutions.carsFleet.dao.VehicleDao;
 import br.com.solutions.carsFleet.model.VehicleModel;
 
 public class CreateVehicle implements ControllerCommand{
+	
+	private VehicleModel vehicle = null;
+	private VehicleDao vehicleDao;
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		VehicleModel vehicle = new VehicleModel();
+		vehicle = new VehicleModel();
 		
 		 String type = request.getParameter("type");
 		 String plate = request.getParameter("plate");
@@ -31,7 +34,7 @@ public class CreateVehicle implements ControllerCommand{
 		 vehicle.setYear(year);
 		 vehicle.setLicensingExpiration(licensingExpiration);	
 		 
-		 VehicleDao.create(vehicle);
+		 vehicleDao.create(vehicle);
 		
 	}
 	
